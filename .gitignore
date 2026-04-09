@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+scramjet-app/node_modules/
+
+# Backups and zips
+*.zip
+*.tar.gz
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build files
+dist/
+build/
+.pnpm-store/

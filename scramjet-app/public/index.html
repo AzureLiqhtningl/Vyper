@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<title>Vyper</title>
+
+	<link rel="shortcut icon" href="logo.png" />
+
+	<script src="/scram/scramjet.all.js"></script>
+	<script src="/baremux/index.js"></script>
+
+	<link rel="stylesheet" href="index.css" />
+	<script src="register-sw.js" defer></script>
+	<script src="search.js" defer></script>
+	<script src="index.js" defer></script>
+</head>
+
+<body>
+	<div title="Vyper Logo" class="flex-center logo-wrapper header-center">
+		<img class="logo" src="logo.png" alt="Vyper" />
+		<h1>Vyper | MW</h1>
+	</div>
+	<div class="flex-center desc left-margin">
+		<p>
+			Vyper is an experimental interception based web proxy designed to
+			evade internet censorship, bypass arbitrary web browser restrictions and
+			innovate web proxy technologies.
+		</p>
+	</div>
+
+	<form id="sj-form" class="flex-center">
+		<input id="sj-search-engine" value="https://search.brave.com/search?q=%s" type="hidden" />
+		<input id="sj-address" type="text" placeholder="Search the web freely" />
+	</form>
+	<div class="desc left-margin">
+		<p id="sj-error"></p>
+		<pre id="sj-error-code"></pre>
+	</div>
+
+</body>
+
+</html>
