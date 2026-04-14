@@ -21,7 +21,6 @@ body {
     animation: fadeInPage 1.2s ease forwards;
 }
 
-/* Smooth fade-in */
 @keyframes fadeInPage {
     to { opacity: 1; }
 }
@@ -37,36 +36,16 @@ h1, h2, h3, h4, h5, h6 {
         0 0 16px #58F00C,
         0 0 24px #58F00C;
     animation: neonPulse 2.5s ease-in-out infinite;
-    transition:
-        font-family 0.4s ease,
-        text-shadow 0.4s ease,
-        color 0.4s ease;
 }
 
-/* Neon pulsing animation */
 @keyframes neonPulse {
-    0% {
-        text-shadow:
-            0 0 6px #58F00C,
-            0 0 12px #58F00C,
-            0 0 18px #58F00C;
-    }
-    50% {
-        text-shadow:
-            0 0 12px #58F00C,
-            0 0 24px #58F00C,
-            0 0 36px #58F00C;
-    }
-    100% {
-        text-shadow:
-            0 0 6px #58F00C,
-            0 0 12px #58F00C,
-            0 0 18px #58F00C;
-    }
+    0% { text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C, 0 0 18px #58F00C; }
+    50% { text-shadow: 0 0 12px #58F00C, 0 0 24px #58F00C, 0 0 36px #58F00C; }
+    100% { text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C, 0 0 18px #58F00C; }
 }
 
 /* --------------------------------------------------
-   VYPER TITLE UNDER LOGO (Exo 2 + typing loop)
+   LOGO TITLE (Exo 2 — STATIC, NO TYPING)
 -------------------------------------------------- */
 .logo-wrapper h1 {
     font-family: "Exo 2", sans-serif !important;
@@ -74,26 +53,9 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow:
         0 0 6px #58F00C,
         0 0 12px #58F00C;
-    overflow: hidden;
     white-space: nowrap;
-    border-right: 3px solid #58F00C;
-    width: 0;
-    animation:
-        typing 2.2s steps(20, end) infinite,
-        blinkCaret 0.75s step-end infinite;
-}
-
-/* Looping typing animation */
-@keyframes typing {
-    0% { width: 0; }
-    40% { width: 100%; }
-    60% { width: 100%; }
-    100% { width: 0; }
-}
-
-/* Blinking caret */
-@keyframes blinkCaret {
-    50% { border-color: transparent; }
+    border: none;
+    width: auto;
 }
 
 /* --------------------------------------------------
@@ -108,10 +70,8 @@ footer span,
 .credit a {
     font-family: "Atomic Age", cursive;
     color: #C4C4C4;
-    transition: font-family 0.4s ease;
 }
 
-/* Neon hover animations */
 a:hover,
 button:hover,
 #sj-address:hover {
@@ -119,7 +79,6 @@ button:hover,
     text-shadow:
         0 0 6px #58F00C,
         0 0 12px #58F00C;
-    transition: 0.25s ease;
 }
 
 /* --------------------------------------------------
@@ -138,7 +97,6 @@ button:hover,
     caret-color: #58F00C;
     transition:
         border-radius 0.1s,
-        font-family 0.4s ease,
         box-shadow 0.3s ease;
 }
 
@@ -149,22 +107,41 @@ button:hover,
 }
 
 /* --------------------------------------------------
+   NEON SPINNER (CENTER SCREEN)
+-------------------------------------------------- */
+#neon-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99999;
+}
+
+.spinner-ring {
+    width: 80px;
+    height: 80px;
+    border: 6px solid rgba(88, 240, 12, 0.2);
+    border-top-color: #58F00C;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite, glowPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 8px #58F00C; }
+    50% { box-shadow: 0 0 20px #58F00C; }
+    100% { box-shadow: 0 0 8px #58F00C; }
+}
+
+/* --------------------------------------------------
    LAYOUT + EXISTING STYLES
 -------------------------------------------------- */
-.flex-center {
-    display: flex;
-    justify-content: center;
-}
-
-.header-center {
-    align-items: center;
-    flex-direction: column;
-    margin-top: 10%;
-}
-
-.left-margin {
-    margin: 0px 16px;
-}
+.flex-center { display: flex; justify-content: center; }
+.header-center { align-items: center; flex-direction: column; margin-top: 10%; }
+.left-margin { margin: 0px 16px; }
 
 #sj-frame {
     border: none;
@@ -176,19 +153,10 @@ button:hover,
     background-color: #111;
 }
 
-#sj-error {
-    color: #ff6666 !important;
-    white-space: pre-wrap;
-}
+#sj-error { color: #ff6666 !important; white-space: pre-wrap; }
+#sj-error-code { font-size: 12px; color: #C4C4C4; }
 
-#sj-error-code {
-    font-size: 12px;
-    color: #C4C4C4;
-}
-
-.logo {
-    height: 25vh;
-}
+.logo { height: 25vh; }
 
 .logo-wrapper .text {
     font-size: 75px;
