@@ -62,10 +62,11 @@ h1, h2, h3, h4, h5, h6 {
    TOP CENTER GAMES BUTTON
 -------------------------------------------------- */
 .top-games-btn {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
 }
 
 .games-btn {
@@ -78,6 +79,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 8px;
     text-shadow: 0 0 8px #58F00C;
     transition: 0.25s ease;
+    white-space: nowrap;
 }
 
 .games-btn:hover {
