@@ -12,5 +12,9 @@ async function handleRequest(event) {
 }
 
 self.addEventListener("fetch", (event) => {
+	if (event.request.url.includes("luminsdk")) {
+		event.respondWith(fetch(event.request));
+		return;
+	}
 	event.respondWith(handleRequest(event));
 });
