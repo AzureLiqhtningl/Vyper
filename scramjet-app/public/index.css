@@ -1,16 +1,57 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap");
+/* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Atomic+Age&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap");
 
+/* Body text uses Pixelify Sans */
 body {
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-family: "Pixelify Sans", Arial, Helvetica, sans-serif;
     margin: 0;
     background: #111;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    transition: font-family 0.4s ease;
 }
 
+/* TITLES use Space Mono + neon glow */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Space Mono", monospace;
+    color: #00ff88;
+    text-shadow:
+        0 0 8px #00ff88,
+        0 0 16px #00ff88,
+        0 0 24px #00ff88;
+    transition:
+        font-family 0.4s ease,
+        text-shadow 0.4s ease,
+        color 0.4s ease;
+}
+
+/* Vyper title under the logo uses Exo 2 */
+.logo-wrapper h1 {
+    font-family: "Exo 2", sans-serif !important;
+    color: white;
+    text-shadow:
+        0 0 6px #00ff88,
+        0 0 12px #00ff88;
+    transition: font-family 0.4s ease;
+}
+
+/* UI ELEMENTS use Atomic Age */
+#sj-address,
+footer a,
+footer span,
+#sj-error,
+#sj-error-code,
+.credit label,
+.credit a {
+    font-family: "Atomic Age", cursive;
+    transition: font-family 0.4s ease;
+}
+
+/* Layout rules */
 .flex-center {
     display: flex;
     justify-content: center;
@@ -44,7 +85,6 @@ body {
 #sj-error-code {
     font-size: 12px;
     color: #fff;
-    font-family: "Courier New", Courier, monospace;
 }
 
 .logo {
@@ -54,10 +94,6 @@ body {
 .logo-wrapper .text {
     font-size: 75px;
     color: #fff;
-}
-
-.logo-wrapper h1 {
-    color: white;
 }
 
 footer {
@@ -85,10 +121,6 @@ footer span {
     font-size: 15px;
 }
 
-footer a {
-    cursor: pointer;
-}
-
 footer a:hover {
     text-decoration: underline;
 }
@@ -100,18 +132,17 @@ footer a:hover {
 
 #sj-address {
     background: none;
-    font-family: inherit;
     padding: 0px 17px;
     height: 48px;
     border: 1px solid rgb(255, 255, 255, 0.2);
-    color: var(--text-color);
-    border-radius: 3px;
+    color: #fff;
+    border-radius: 50px;
     outline: none;
     width: 350px;
     margin-top: 5px;
-    border-radius: 50px;
-    color: #fff;
-    transition: border-radius 0.1s;
+    transition:
+        border-radius 0.1s,
+        font-family 0.4s ease;
 }
 
 #sj-address:focus {
@@ -135,13 +166,6 @@ footer a:hover {
     margin-right: 15px;
 }
 
-.credit a,
-.credit label {
-    color: white;
-    text-decoration: underline;
-    text-align: right;
-}
-
 .credit pre {
     display: none;
     width: 100%;
@@ -159,4 +183,3 @@ footer a:hover {
 .credit input:checked ~ pre {
     display: block;
 }
-
