@@ -7,7 +7,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap");
 
 /* --------------------------------------------------
-   GLOBAL BODY (Pixelify Sans)
+   GLOBAL BODY
 -------------------------------------------------- */
 body {
     font-family: "Pixelify Sans", Arial, Helvetica, sans-serif;
@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------
-   LOGO TITLE (Exo 2 — STATIC, NO TYPING)
+   LOGO TITLE (STATIC)
 -------------------------------------------------- */
 .logo-wrapper h1 {
     font-family: "Exo 2", sans-serif !important;
@@ -56,6 +56,34 @@ h1, h2, h3, h4, h5, h6 {
     white-space: nowrap;
     border: none;
     width: auto;
+}
+
+/* --------------------------------------------------
+   TOP CENTER GAMES BUTTON
+-------------------------------------------------- */
+.top-games-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.games-btn {
+    font-family: "Atomic Age", cursive;
+    font-size: 22px;
+    color: #58F00C;
+    text-decoration: none;
+    padding: 10px 25px;
+    border: 2px solid #58F00C;
+    border-radius: 8px;
+    text-shadow: 0 0 8px #58F00C;
+    transition: 0.25s ease;
+}
+
+.games-btn:hover {
+    color: #111;
+    background: #58F00C;
+    box-shadow: 0 0 15px #58F00C;
 }
 
 /* --------------------------------------------------
@@ -82,7 +110,7 @@ button:hover,
 }
 
 /* --------------------------------------------------
-   SEARCH BAR (glowing caret + neon focus)
+   SEARCH BAR
 -------------------------------------------------- */
 #sj-address {
     background: none;
@@ -107,7 +135,7 @@ button:hover,
 }
 
 /* --------------------------------------------------
-   NEON SPINNER (CENTER SCREEN)
+   NEON SPINNER
 -------------------------------------------------- */
 #neon-spinner {
     position: fixed;
@@ -137,7 +165,7 @@ button:hover,
 }
 
 /* --------------------------------------------------
-   LAYOUT + EXISTING STYLES
+   LAYOUT
 -------------------------------------------------- */
 .flex-center { display: flex; justify-content: center; }
 .header-center { align-items: center; flex-direction: column; margin-top: 10%; }
