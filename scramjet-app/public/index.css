@@ -1,414 +1,210 @@
 /* --------------------------------------------------
    FONTS
 -------------------------------------------------- */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Atomic+Age&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap");
 
 /* --------------------------------------------------
-   CSS CUSTOM PROPERTIES
+   GLOBAL BODY
 -------------------------------------------------- */
-:root {
-    --neon: #58F00C;
-    --neon-dim: #3ab008;
-    --neon-glow: rgba(88, 240, 12, 0.35);
-    --purple: #4a2d8a;
-    --purple-light: #7c5cbf;
-    --bg-primary: #0a0a0f;
-    --bg-secondary: #111118;
-    --bg-card: rgba(255, 255, 255, 0.03);
-    --bg-glass: rgba(255, 255, 255, 0.04);
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(88, 240, 12, 0.3);
-    --text-primary: #e8e8e8;
-    --text-secondary: #888899;
-    --text-muted: #555566;
-    --radius-sm: 8px;
-    --radius-md: 14px;
-    --radius-lg: 20px;
-    --radius-full: 100px;
-    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* --------------------------------------------------
-   GLOBAL RESET & BODY
--------------------------------------------------- */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Pixelify Sans", Arial, Helvetica, sans-serif;
     margin: 0;
-    padding: 0;
-    background: var(--bg-primary);
-    color: var(--text-primary);
+    background: #111;
+    color: #C4C4C4;
     display: flex;
     flex-direction: column;
-    align-items: center;
     min-height: 100vh;
     opacity: 0;
-    animation: fadeInPage 0.8s ease forwards;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    animation: fadeInPage 1.2s ease forwards;
 }
 
-/* Animated gradient background */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(ellipse 800px 600px at 20% 20%, rgba(88, 240, 12, 0.04) 0%, transparent 60%),
-        radial-gradient(ellipse 600px 500px at 80% 80%, rgba(74, 45, 138, 0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 400px 400px at 50% 50%, rgba(88, 240, 12, 0.02) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-    animation: bgShift 20s ease-in-out infinite alternate;
-}
-
-@keyframes bgShift {
-    0% {
-        background:
-            radial-gradient(ellipse 800px 600px at 20% 20%, rgba(88, 240, 12, 0.04) 0%, transparent 60%),
-            radial-gradient(ellipse 600px 500px at 80% 80%, rgba(74, 45, 138, 0.06) 0%, transparent 60%),
-            radial-gradient(ellipse 400px 400px at 50% 50%, rgba(88, 240, 12, 0.02) 0%, transparent 50%);
-    }
-    100% {
-        background:
-            radial-gradient(ellipse 800px 600px at 40% 30%, rgba(88, 240, 12, 0.05) 0%, transparent 60%),
-            radial-gradient(ellipse 600px 500px at 60% 70%, rgba(74, 45, 138, 0.07) 0%, transparent 60%),
-            radial-gradient(ellipse 400px 400px at 30% 60%, rgba(88, 240, 12, 0.03) 0%, transparent 50%);
-    }
-}
-
-/* Subtle noise texture overlay */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.5;
-}
-
-/* Smooth fade-in */
 @keyframes fadeInPage {
     to { opacity: 1; }
 }
 
-/* All content above pseudo-elements */
-body > * {
-    position: relative;
-    z-index: 1;
-}
-
 /* --------------------------------------------------
-   TYPOGRAPHY
+   TITLES (Space Mono + pulsing neon)
 -------------------------------------------------- */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Exo 2", sans-serif;
-    font-weight: 700;
-    color: var(--neon);
-    margin: 0;
-    letter-spacing: -0.02em;
+    font-family: "Space Mono", monospace;
+    color: #58F00C;
+    text-shadow:
+        0 0 8px #58F00C,
+        0 0 16px #58F00C,
+        0 0 24px #58F00C;
+    animation: neonPulse 2.5s ease-in-out infinite;
 }
 
-p {
-    line-height: 1.7;
-    color: var(--text-secondary);
-    margin: 0;
+@keyframes neonPulse {
+    0% { text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C, 0 0 18px #58F00C; }
+    50% { text-shadow: 0 0 12px #58F00C, 0 0 24px #58F00C, 0 0 36px #58F00C; }
+    100% { text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C, 0 0 18px #58F00C; }
 }
 
 /* --------------------------------------------------
-   HEADER / LOGO SECTION
+   LOGO TITLE (STATIC)
 -------------------------------------------------- */
-.logo-wrapper {
-    margin-top: clamp(60px, 12vh, 140px);
-    text-align: center;
-}
-
-.logo-wrapper.header-center {
-    align-items: center;
-    flex-direction: column;
-}
-
-.logo {
-    height: clamp(80px, 18vh, 160px);
-    filter: drop-shadow(0 0 30px rgba(88, 240, 12, 0.2));
-    animation: logoFloat 4s ease-in-out infinite;
-    transition: filter var(--transition-smooth);
-}
-
-.logo:hover {
-    filter: drop-shadow(0 0 50px rgba(88, 240, 12, 0.4));
-}
-
-@keyframes logoFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
-
 .logo-wrapper h1 {
-    font-family: "Exo 2", sans-serif;
-    font-size: clamp(20px, 3vw, 32px);
-    font-weight: 700;
-    color: var(--neon);
-    margin-top: 12px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-shadow: 0 0 20px var(--neon-glow);
-    overflow: hidden;
+    font-family: "Exo 2", sans-serif !important;
+    color: #58F00C;
+    text-shadow:
+        0 0 6px #58F00C,
+        0 0 12px #58F00C;
     white-space: nowrap;
-    border-right: 2px solid var(--neon);
-    width: 0;
-    animation:
-        typing 3s steps(12, end) infinite,
-        blinkCaret 0.8s step-end infinite;
-}
-
-/* Looping typing animation */
-@keyframes typing {
-    0% { width: 0; }
-    35% { width: 100%; }
-    65% { width: 100%; }
-    100% { width: 0; }
-}
-
-/* Blinking caret */
-@keyframes blinkCaret {
-    50% { border-color: transparent; }
+    border: none;
+    width: auto;
 }
 
 /* --------------------------------------------------
-   DESCRIPTION
+   TOP CENTER GAMES BUTTON
 -------------------------------------------------- */
-.desc {
-    max-width: 540px;
-    text-align: center;
-    margin: 0 auto;
-    padding: 0 20px;
+.top-games-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.desc p {
-    width: auto;
-    max-width: 540px;
-    font-size: clamp(13px, 1.6vw, 15px);
-    line-height: 1.8;
-    color: var(--text-secondary);
-    font-weight: 300;
+.games-btn {
+    font-family: "Atomic Age", cursive;
+    font-size: 22px;
+    color: #58F00C;
+    text-decoration: none;
+    padding: 10px 25px;
+    border: 2px solid #58F00C;
+    border-radius: 8px;
+    text-shadow: 0 0 8px #58F00C;
+    transition: 0.25s ease;
+}
+
+.games-btn:hover {
+    color: #111;
+    background: #58F00C;
+    box-shadow: 0 0 15px #58F00C;
+}
+
+/* --------------------------------------------------
+   UI ELEMENTS (Atomic Age)
+-------------------------------------------------- */
+#sj-address,
+footer a,
+footer span,
+#sj-error,
+#sj-error-code,
+.credit label,
+.credit a {
+    font-family: "Atomic Age", cursive;
+    color: #C4C4C4;
+}
+
+a:hover,
+button:hover,
+#sj-address:hover {
+    color: #58F00C;
+    text-shadow:
+        0 0 6px #58F00C,
+        0 0 12px #58F00C;
 }
 
 /* --------------------------------------------------
    SEARCH BAR
 -------------------------------------------------- */
-#sj-form {
-    margin-top: 28px;
-    width: 100%;
-    max-width: 580px;
-    padding: 0 20px;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-}
-
 #sj-address {
-    flex: 1;
-    min-width: 200px;
-    font-family: "Inter", sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    background: var(--bg-glass);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 16px 24px;
-    height: auto;
-    border: 1px solid var(--border-subtle);
-    color: var(--text-primary);
-    border-radius: var(--radius-full);
+    background: none;
+    padding: 0px 17px;
+    height: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #C4C4C4;
+    border-radius: 50px;
     outline: none;
-    caret-color: var(--neon);
+    width: 350px;
+    margin-top: 5px;
+    caret-color: #58F00C;
     transition:
-        border-color var(--transition-fast),
-        box-shadow var(--transition-fast),
-        background var(--transition-fast);
-    letter-spacing: 0.01em;
-}
-
-#sj-address::placeholder {
-    color: var(--text-muted);
-    font-weight: 300;
-}
-
-#sj-address:hover {
-    border-color: rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.05);
+        border-radius 0.1s,
+        box-shadow 0.3s ease;
 }
 
 #sj-address:focus {
-    border-color: var(--neon);
-    box-shadow:
-        0 0 0 3px rgba(88, 240, 12, 0.1),
-        0 0 30px rgba(88, 240, 12, 0.08);
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-md);
-}
-
-/* Search engine dropdown */
-.search-engine-select {
-    font-family: "Inter", sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    background: var(--bg-glass);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    color: var(--text-secondary);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-full);
-    padding: 12px 18px;
-    outline: none;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23888899' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 36px;
-    transition:
-        border-color var(--transition-fast),
-        background var(--transition-fast),
-        color var(--transition-fast);
-}
-
-.search-engine-select:hover {
-    border-color: rgba(255, 255, 255, 0.12);
-    color: var(--text-primary);
-}
-
-.search-engine-select:focus {
-    border-color: var(--neon);
-    box-shadow: 0 0 0 3px rgba(88, 240, 12, 0.1);
-    color: var(--neon);
-}
-
-.search-engine-select option {
-    background: #1a1a22;
-    color: var(--text-primary);
-    padding: 8px;
+    border: 1px solid #58F00C;
+    box-shadow: 0 0 12px #58F00C;
+    border-radius: 6px;
 }
 
 /* --------------------------------------------------
-   NEON LOADING SPINNER
+   NEON SPINNER
 -------------------------------------------------- */
 #neon-spinner {
     position: fixed;
-    inset: 0;
-    background: rgba(10, 10, 15, 0.85);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    animation: fadeInPage 0.3s ease forwards;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99999;
 }
 
 .spinner-ring {
-    width: 48px;
-    height: 48px;
-    border: 3px solid rgba(88, 240, 12, 0.1);
-    border-top-color: var(--neon);
+    width: 80px;
+    height: 80px;
+    border: 6px solid rgba(88, 240, 12, 0.2);
+    border-top-color: #58F00C;
     border-radius: 50%;
-    animation: spinnerRotate 0.8s linear infinite;
-    box-shadow: 0 0 20px var(--neon-glow);
+    animation: spin 0.8s linear infinite, glowPulse 1.5s ease-in-out infinite;
 }
 
-@keyframes spinnerRotate {
+@keyframes spin {
     to { transform: rotate(360deg); }
 }
 
-/* --------------------------------------------------
-   GAMES BUTTON
--------------------------------------------------- */
-.nav-actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 24px;
-    padding: 0 20px;
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 8px #58F00C; }
+    50% { box-shadow: 0 0 20px #58F00C; }
+    100% { box-shadow: 0 0 8px #58F00C; }
 }
 
-.btn-games {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-primary);
-    padding: 12px 28px;
-    background: var(--bg-glass);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-full);
-    text-decoration: none;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    transition:
-        background var(--transition-fast),
-        border-color var(--transition-fast),
-        transform var(--transition-spring),
-        box-shadow var(--transition-fast);
+/* --------------------------------------------------
+   GAMES PAGE GRID + NEON HOVER ANIMATION
+-------------------------------------------------- */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    width: 80%;
+    margin-top: 40px;
+}
+
+.games-grid .game-card {
+    background: #111;
+    border: 2px solid #58F00C;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    color: #C4C4C4;
     cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-.btn-games:hover {
-    background: rgba(88, 240, 12, 0.08);
-    border-color: var(--border-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(88, 240, 12, 0.1);
-    color: var(--neon);
-    text-shadow: none;
-}
-
-.btn-games:active {
-    transform: translateY(0) scale(0.98);
-}
-
-/* --------------------------------------------------
-   ERROR DISPLAY
--------------------------------------------------- */
-#sj-error {
-    color: #ff5555 !important;
-    white-space: pre-wrap;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
-    text-align: center;
-    margin-top: 16px;
-}
-
-#sj-error-code {
-    font-size: 11px;
-    font-family: "JetBrains Mono", monospace;
-    color: var(--text-muted);
-    text-align: center;
+/* 🔥 NEON HOVER ANIMATION */
+.games-grid .game-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: #58F00C;
+    box-shadow:
+        0 0 10px #58F00C,
+        0 0 20px #58F00C,
+        0 0 30px #58F00C;
+    color: #111;
+    background: #58F00C;
 }
 
 /* --------------------------------------------------
-   PROXY IFRAME
+   LAYOUT
 -------------------------------------------------- */
+.flex-center { display: flex; justify-content: center; }
+.header-center { align-items: center; flex-direction: column; margin-top: 10%; }
+.left-margin { margin: 0px 16px; }
+
 #sj-frame {
     border: none;
     position: absolute;
@@ -416,109 +212,67 @@ p {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--bg-primary);
-    z-index: 9999;
+    background-color: #111;
 }
 
-/* --------------------------------------------------
-   LAYOUT HELPERS
--------------------------------------------------- */
-.flex-center {
-    display: flex;
-    justify-content: center;
-}
+#sj-error { color: #ff6666 !important; white-space: pre-wrap; }
+#sj-error-code { font-size: 12px; color: #C4C4C4; }
 
-.header-center {
-    align-items: center;
-    flex-direction: column;
-}
+.logo { height: 25vh; }
 
-.left-margin {
-    margin: 0px 16px;
-}
-
-/* --------------------------------------------------
-   FOOTER
--------------------------------------------------- */
 footer {
     margin: 0 16px;
     margin-top: auto;
-    padding: 30px 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 12px;
+    line-height: 30px;
     margin-bottom: 20px;
 }
 
 footer > div {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px;
+    margin-bottom: 15px;
 }
 
 footer a,
 footer span {
-    font-family: "Inter", sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--text-muted);
+    margin: 0 15px;
     text-decoration: none;
-    transition: color var(--transition-fast);
-    margin: 0 12px;
+    font-size: 15px;
 }
 
 footer a:hover {
-    color: var(--neon);
-    text-decoration: none;
+    text-decoration: underline;
+    color: #58F00C;
 }
 
-/* --------------------------------------------------
-   CREDITS / LICENSE SECTION
--------------------------------------------------- */
+.desc p {
+    width: 560px;
+    color: #C4C4C4;
+}
+
 .credit {
-    border-radius: var(--radius-md);
-    padding: 16px 20px;
+    border-radius: 10px;
+    padding: 10px;
+    display: block;
+    border: #C4C4C4 1px solid;
+    color: #C4C4C4;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 15px;
-    border: 1px solid var(--border-subtle);
-    background: var(--bg-card);
-    color: var(--text-secondary);
-    transition: border-color var(--transition-fast);
-}
-
-.credit:hover {
-    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .credit label {
     margin-left: auto;
     margin-right: 15px;
-    font-family: "Inter", sans-serif;
-    font-size: 13px;
-    color: var(--text-muted);
-}
-
-.credit a {
-    font-family: "Inter", sans-serif;
-    color: var(--neon-dim);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-}
-
-.credit a:hover {
-    color: var(--neon);
 }
 
 .credit pre {
     display: none;
     width: 100%;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
-    color: var(--text-muted);
 }
 
 .credit label::after {
@@ -532,66 +286,4 @@ footer a:hover {
 
 .credit input:checked ~ pre {
     display: block;
-}
-
-/* --------------------------------------------------
-   HOVER EFFECTS (global)
--------------------------------------------------- */
-a {
-    transition: color var(--transition-fast);
-}
-
-a:hover {
-    color: var(--neon);
-    text-shadow: none;
-}
-
-button:hover {
-    color: var(--neon);
-}
-
-/* --------------------------------------------------
-   SELECTION
--------------------------------------------------- */
-::selection {
-    background: rgba(88, 240, 12, 0.2);
-    color: #fff;
-}
-
-/* --------------------------------------------------
-   SCROLLBAR
--------------------------------------------------- */
-::-webkit-scrollbar {
-    width: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-/* --------------------------------------------------
-   RESPONSIVE
--------------------------------------------------- */
-@media (max-width: 600px) {
-    .logo-wrapper {
-        margin-top: 50px;
-    }
-
-    .desc p {
-        font-size: 13px;
-    }
-
-    #sj-address {
-        padding: 14px 20px;
-        font-size: 14px;
-    }
 }
