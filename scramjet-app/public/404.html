@@ -1,185 +1,147 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-        />
-        <title>Scramjet | Error</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+        <title>Vyper — 404</title>
         <base href="/" />
-        <link rel="shortcut icon" content="favicon.ico" />
+        <link rel="shortcut icon" href="logo.png" />
         <link rel="stylesheet" href="index.css" />
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
-
         <style>
-            body {
-                background: #000;
-                color: white;
-                margin: 0;
-                font-family: 'Space Mono', monospace;
+            .error-page {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 80vh;
+                text-align: center;
+                padding: 20px;
             }
 
-            /* Glitch Title */
-            .glitch {
-                position: relative;
-                font-size: 42px;
-                font-weight: 700;
-                color: #fff;
-                text-shadow: 0 0 10px #00ff88;
-                animation: glitch-flicker 2s infinite;
-            }
-
-            .glitch::before,
-            .glitch::after {
-                content: attr(data-text);
-                position: absolute;
-                left: 0;
-                top: 0;
-                opacity: 0.7;
-            }
-
-            .glitch::before {
-                color: #00ff88;
-                transform: translate(2px, -2px);
-            }
-
-            .glitch::after {
-                color: #ff00ff;
-                transform: translate(-2px, 2px);
-            }
-
-            @keyframes glitch-flicker {
-                0% { opacity: 1; }
-                50% { opacity: 0.85; }
-                100% { opacity: 1; }
-            }
-
-            /* Neon Animated 404 */
             .error-code {
-                font-family: 'Pixelify Sans', cursive;
-                font-size: 90px;
+                font-family: "JetBrains Mono", "Exo 2", monospace;
+                font-size: clamp(80px, 15vw, 140px);
                 font-weight: 700;
-                text-align: left;
-                margin: 20px 0 0 20px;
-                color: #00ff88;
+                color: var(--neon);
+                line-height: 1;
+                margin-bottom: 8px;
                 text-shadow:
-                    0 0 10px #00ff88,
-                    0 0 20px #00ff88,
-                    0 0 40px #00ff88;
-                animation: pulse404 2s infinite ease-in-out;
+                    0 0 20px var(--neon-glow),
+                    0 0 60px rgba(88, 240, 12, 0.15);
+                animation: pulse404 3s ease-in-out infinite;
+                letter-spacing: -0.04em;
             }
 
             @keyframes pulse404 {
-                0% {
+                0%, 100% {
                     text-shadow:
-                        0 0 10px #00ff88,
-                        0 0 20px #00ff88,
-                        0 0 40px #00ff88;
-                    transform: scale(1);
+                        0 0 20px var(--neon-glow),
+                        0 0 60px rgba(88, 240, 12, 0.15);
                     opacity: 1;
                 }
                 50% {
                     text-shadow:
-                        0 0 20px #00ff88,
-                        0 0 40px #00ff88,
-                        0 0 60px #00ff88;
-                    transform: scale(1.08);
-                    opacity: 0.85;
-                }
-                100% {
-                    text-shadow:
-                        0 0 10px #00ff88,
-                        0 0 20px #00ff88,
-                        0 0 40px #00ff88;
-                    transform: scale(1);
-                    opacity: 1;
+                        0 0 30px var(--neon-glow),
+                        0 0 80px rgba(88, 240, 12, 0.25);
+                    opacity: 0.9;
                 }
             }
 
-            /* Error Box */
-            .error-box {
-                margin: 20px 20px;
-                padding: 25px;
-                border-left: 4px solid #00ff88;
-                background: #0a0a0a;
-                box-shadow: 0 0 20px #00ff88;
-                animation: glow 2.5s ease-in-out infinite;
-                max-width: 600px;
+            .error-title {
+                font-family: "Exo 2", sans-serif;
+                font-size: clamp(18px, 3vw, 24px);
+                font-weight: 600;
+                color: var(--text-primary);
+                margin-bottom: 12px;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
             }
 
-            @keyframes glow {
-                0% { box-shadow: 0 0 10px #00ff88; }
-                50% { box-shadow: 0 0 25px #00ff88; }
-                100% { box-shadow: 0 0 10px #00ff88; }
-            }
-
-            /* Error Message */
             .error-msg {
-                font-size: 18px;
-                color: #cfcfcf;
-                opacity: 0;
-                animation: fadeIn 1.2s forwards;
-                font-family: 'Pixelify Sans', cursive;
+                font-size: 15px;
+                color: var(--text-secondary);
+                max-width: 400px;
+                line-height: 1.7;
+                font-weight: 300;
+                margin-bottom: 32px;
             }
 
-            @keyframes fadeIn {
-                to { opacity: 1; }
-            }
-
-            /* Return Button */
             .back-btn {
-                display: inline-block;
-                margin-top: 20px;
-                padding: 12px 24px;
-                border: 2px solid #00ff88;
-                color: #00ff88;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 14px 32px;
+                border: 1px solid var(--border-hover);
+                color: var(--neon);
+                background: rgba(88, 240, 12, 0.04);
                 text-decoration: none;
-                border-radius: 6px;
-                transition: 0.25s;
-                font-family: 'Space Mono', monospace;
+                border-radius: var(--radius-full);
+                font-family: "Inter", sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 0.03em;
+                transition:
+                    background var(--transition-fast),
+                    border-color var(--transition-fast),
+                    transform var(--transition-spring),
+                    box-shadow var(--transition-fast);
             }
 
             .back-btn:hover {
-                background: #00ff88;
-                color: #000;
-                box-shadow: 0 0 20px #00ff88;
+                background: rgba(88, 240, 12, 0.1);
+                border-color: var(--neon);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 30px rgba(88, 240, 12, 0.12);
+                color: var(--neon);
+                text-shadow: none;
             }
 
-            footer {
-                margin: 40px 20px;
-                color: #888;
+            .back-btn:active {
+                transform: translateY(0) scale(0.98);
             }
 
-            footer a {
-                color: #00ff88;
+            .error-footer {
+                margin-top: auto;
+                padding: 24px 20px;
+                text-align: center;
+            }
+
+            .error-footer a {
+                color: var(--text-muted);
                 text-decoration: none;
+                font-size: 13px;
+                transition: color var(--transition-fast);
             }
 
-            footer a:hover {
-                text-decoration: underline;
+            .error-footer a:hover {
+                color: var(--neon);
+            }
+
+            .error-footer span {
+                color: var(--text-muted);
+                font-size: 13px;
+                margin-left: 16px;
             }
         </style>
     </head>
 
     <body>
-        <div class="logo-wrapper left-margin">
-            <h1 class="glitch" data-text="Scramjet | Error">Scramjet | Error</h1>
+        <div class="error-page">
+            <div class="error-code">404</div>
+            <div class="error-title">Page Not Found</div>
+            <p class="error-msg">
+                The server could not route your request.
+                The page you're looking for doesn't exist or has been moved.
+            </p>
+            <a href="/" class="back-btn">
+                ← Return to Vyper
+            </a>
         </div>
 
-        <div class="error-code">404</div>
-
-        <div class="error-box left-margin">
-            <p class="error-msg">The server could not route your request.</p>
-            <a href="/" class="back-btn">Return to Vyper</a>
-        </div>
-
-        <footer>
+        <div class="error-footer">
             <a title="License information" href="credits.html">Credits</a>
-            <span>Scramjet &copy; MW 2025</span>
-        </footer>
+            <span>Vyper &copy; 2025</span>
+        </div>
     </body>
 </html>

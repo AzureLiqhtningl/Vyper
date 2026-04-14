@@ -110,4 +110,3 @@ form.addEventListener("submit", async (event) => {
         errorCode.textContent = err.toString();
     }
 });
-

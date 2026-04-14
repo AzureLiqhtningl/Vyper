@@ -1,59 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vyper | Proxy</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="index.css" />
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="description" content="Vyper — an experimental interception-based web proxy designed to evade censorship and bypass web restrictions." />
+	<title>Vyper</title>
+
+	<link rel="shortcut icon" href="logo.png" />
+
+	<script src="/scram/scramjet.loader.js"></script>
+	<script src="/baremux/baremux.js"></script>
+
+	<link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
+	<!-- Hero Section -->
+	<div title="Vyper Logo" class="flex-center logo-wrapper header-center">
+		<img class="logo" src="logo.png" alt="Vyper" />
+		<h1>Vyper | Proxy</h1>
+	</div>
 
-  <div class="header-center flex-center">
-    <div class="logo-wrapper">
-      <img src="logo.png" alt="Vyper Logo" class="logo" />
-      <h1>Vyper | Proxy</h1>
-    </div>
+	<!-- Description -->
+	<div class="flex-center desc">
+		<p>
+			Browse the web freely through the Vyper proxy engine.
+		</p>
+	</div>
 
-    <div class="desc">
-      <p>Browse the web freely through the Vyper proxy engine.</p>
-    </div>
+	<!-- Search -->
+	<form id="sj-form" class="flex-center">
+		<input id="sj-address" type="text" placeholder="Enter URL or search..." autocomplete="off" spellcheck="false" />
+		<select id="sj-search-engine" class="search-engine-select">
+			<option value="https://www.google.com/search?q=%s">Google</option>
+			<option value="https://duckduckgo.com/?q=%s">DuckDuckGo</option>
+			<option value="https://bing.com/search?q=%s">Bing</option>
+		</select>
+	</form>
 
-    <form id="sj-form" class="flex-center">
-      <input
-        id="sj-address"
-        type="text"
-        placeholder="Enter URL or search..."
-        autocomplete="off"
-      />
+	<!-- Navigation -->
+	<div class="flex-center nav-actions">
+		<a href="games.html" class="btn-games">
+			<span>🎮</span>
+			<span>Play Games</span>
+		</a>
+	</div>
 
-      <select id="sj-search-engine" class="left-margin">
-        <option value="https://www.google.com/search?q=%s">Google</option>
-        <option value="https://duckduckgo.com/?q=%s">DuckDuckGo</option>
-        <option value="https://bing.com/search?q=%s">Bing</option>
-      </select>
-    </form>
+	<!-- Error Display -->
+	<div class="desc">
+		<p id="sj-error"></p>
+		<pre id="sj-error-code"></pre>
+	</div>
 
-    <p id="sj-error"></p>
-    <pre id="sj-error-code"></pre>
-  </div>
+	<footer>
+		<div>
+			<a href="/">Home</a>
+			<a href="games.html">Games</a>
+		</div>
+		<span>© 2026 Vyper Proxy</span>
+	</footer>
 
-  <footer>
-    <div>
-      <a href="#">Home</a>
-      <a href="#">Games</a>
-      <a href="#">Apps</a>
-      <a href="#">Settings</a>
-    </div>
-    <span>© 2026 Vyper Proxy</span>
-  </footer>
-
-  <!-- JS -->
-  <script src="/scram/scramjet.loader.js"></script>
-  <script src="/baremux/baremux.js"></script>
-  <script src="index.js"></script>
-
+	<script src="index.js"></script>
 </body>
+
 </html>
