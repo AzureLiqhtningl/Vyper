@@ -1,34 +1,34 @@
+Here's the HTML:
+
+```html
 <!doctype html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 	<meta name="description" content="Vyper — an experimental interception-based web proxy designed to evade censorship and bypass web restrictions." />
-	<title>Vyper</title>
-
+	<title>Vyper | Proxy</title>
 	<link rel="shortcut icon" href="logo.png" />
-
 	<script src="/scram/scramjet.loader.js"></script>
 	<script src="/baremux/baremux.js"></script>
-
 	<link rel="stylesheet" href="index.css" />
 </head>
-
 <body>
+	<!-- Games Button (Top Center) -->
+	<div class="top-games-btn">
+		<a href="games.html" class="games-btn">Games</a>
+	</div>
 	<!-- Hero Section -->
 	<div title="Vyper Logo" class="flex-center logo-wrapper header-center">
 		<img class="logo" src="logo.png" alt="Vyper" />
 		<h1>Vyper | Proxy</h1>
 	</div>
-
 	<!-- Description -->
 	<div class="flex-center desc">
 		<p>
 			Browse the web freely through the Vyper proxy engine.
 		</p>
 	</div>
-
 	<!-- Search -->
 	<form id="sj-form" class="flex-center">
 		<input id="sj-address" type="text" placeholder="Enter URL or search..." autocomplete="off" spellcheck="false" />
@@ -38,21 +38,11 @@
 			<option value="https://bing.com/search?q=%s">Bing</option>
 		</select>
 	</form>
-
-	<!-- Navigation -->
-	<div class="flex-center nav-actions">
-		<a href="games.html" class="btn-games">
-			<span>🎮</span>
-			<span>Play Games</span>
-		</a>
-	</div>
-
 	<!-- Error Display -->
 	<div class="desc">
 		<p id="sj-error"></p>
 		<pre id="sj-error-code"></pre>
 	</div>
-
 	<footer>
 		<div>
 			<a href="/">Home</a>
@@ -60,9 +50,7 @@
 		</div>
 		<span>© 2026 Vyper Proxy</span>
 	</footer>
-
 	<script src="index.js"></script>
 </body>
-
 </html>
-
+```
