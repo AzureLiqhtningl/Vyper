@@ -1,54 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vyper | Games</title>
-
-  <link rel="stylesheet" href="index.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Game Page</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0a0a0a;
+    }
+  </style>
 </head>
-
 <body>
-
-  <!-- TOP CENTER BUTTON -->
-  <div class="top-games-btn">
-    <a href="index.html" class="games-btn">Home</a>
-  </div>
-
-  <div class="header-center flex-center">
-    <div class="logo-wrapper">
-      <img src="logo.png" alt="Vyper Logo" class="logo" />
-      <h1>Games</h1>
-    </div>
-
-    <div class="desc">
-      <p>Select a game below to launch it through the Vyper proxy engine.</p>
-    </div>
-
-    <div id="games" class="games-grid">
-      <!-- LuminSDK or your custom cards will populate here -->
-    </div>
-  </div>
-
-  <footer>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="games.html">Games</a>
-      <a href="#">Apps</a>
-      <a href="#">Settings</a>
-    </div>
-    <span>© 2026 Vyper Proxy</span>
-  </footer>
+  <div id="games"></div>
 
   <script src="https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js"></script>
   <script>
     Lumin.init({
       container: '#games',
       theme: 'dark',
-      onReady: () => console.log('Vyper is ready'),
-      onError: (err) => console.error('Vyper | Proxy error:', err),
+      onReady: () => console.log('LuminSDK is ready'),
+      onError: (err) => console.error('LuminSDK error:', err),
     });
   </script>
-
 </body>
 </html>

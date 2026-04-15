@@ -1,56 +1,47 @@
-Here's the HTML:
-
-```html
 <!doctype html>
-<html lang="en">
+<html>
+
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-	<meta name="description" content="Vyper — an experimental interception-based web proxy designed to evade censorship and bypass web restrictions." />
-	<title>Vyper | Proxy</title>
+	<title>Vyper</title>
+
 	<link rel="shortcut icon" href="logo.png" />
-	<script src="/scram/scramjet.loader.js"></script>
-	<script src="/baremux/baremux.js"></script>
+
+	<script src="/scram/scramjet.all.js"></script>
+	<script src="/baremux/index.js"></script>
+
 	<link rel="stylesheet" href="index.css" />
+	<script src="register-sw.js" defer></script>
+	<script src="search.js" defer></script>
+	<script src="index.js" defer></script>
 </head>
+
 <body>
-	<!-- Games Button (Top Center) -->
-	<div class="top-games-btn">
-		<a href="games.html" class="games-btn">Games</a>
-	</div>
-	<!-- Hero Section -->
 	<div title="Vyper Logo" class="flex-center logo-wrapper header-center">
 		<img class="logo" src="logo.png" alt="Vyper" />
-		<h1>Vyper | Proxy</h1>
+		<h1>Vyper | MW</h1>
 	</div>
-	<!-- Description -->
-	<div class="flex-center desc">
+	<div class="flex-center desc left-margin">
 		<p>
-			Browse the web freely through the Vyper proxy engine.
+			Vyper is an experimental interception based web proxy designed to
+			evade internet censorship, bypass arbitrary web browser restrictions and
+			innovate web proxy technologies.
 		</p>
 	</div>
-	<!-- Search -->
+
 	<form id="sj-form" class="flex-center">
-		<input id="sj-address" type="text" placeholder="Enter URL or search..." autocomplete="off" spellcheck="false" />
-		<select id="sj-search-engine" class="search-engine-select">
-			<option value="https://www.google.com/search?q=%s">Google</option>
-			<option value="https://duckduckgo.com/?q=%s">DuckDuckGo</option>
-			<option value="https://bing.com/search?q=%s">Bing</option>
-		</select>
+		<input id="sj-search-engine" value="https://search.brave.com/search?q=%s" type="hidden" />
+		<input id="sj-address" type="text" placeholder="Search the web freely" />
 	</form>
-	<!-- Error Display -->
-	<div class="desc">
+	<div class="flex-center" style="margin-top: 20px;">
+		<a href="games.html" style="color: white; padding: 10px 24px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; text-decoration: none; font-size: 15px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">🎮 Play Games</a>
+	</div>
+	<div class="desc left-margin">
 		<p id="sj-error"></p>
 		<pre id="sj-error-code"></pre>
 	</div>
-	<footer>
-		<div>
-			<a href="/">Home</a>
-			<a href="games.html">Games</a>
-		</div>
-		<span>© 2026 Vyper Proxy</span>
-	</footer>
-	<script src="index.js"></script>
+
 </body>
+
 </html>
-```
