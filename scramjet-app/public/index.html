@@ -4,9 +4,9 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-	<title>Vyper</title>
+	<title>Vyper | Proxy</title>
 
-	<link rel="shortcut icon" href="logo.png" />
+	<link rel="shortcut icon" href="Vyper Logo.png" />
 
 	<script src="/scram/scramjet.all.js"></script>
 	<script src="/baremux/index.js"></script>
@@ -18,25 +18,52 @@
 </head>
 
 <body>
+	<!-- Top Navigation Buttons -->
+	<div class="top-nav-buttons">
+		<a href="index.html" class="nav-button home-button" title="Home">Home</a>
+		<a href="games.html" class="nav-button games-button" title="Games">Games</a>
+		<a href="settings.html" class="nav-button settings-button" title="Settings">Settings</a>
+	</div>
+
+	<!-- Browser Tab UI -->
+	<div id="browser-tab" class="browser-tab hidden">
+		<div class="tab-controls-left">
+			<button id="btn-back" class="tab-btn" title="Go Back">‹</button>
+			<button id="btn-forward" class="tab-btn" title="Go Forward">›</button>
+			<button id="btn-refresh" class="tab-btn" title="Refresh">⟳</button>
+		</div>
+		<div class="tab-center" id="tab-center">
+			<span class="tab-icon">🌐</span>
+			<span class="tab-text" id="tab-domain">New Tab</span>
+			<input type="text" id="tab-input" class="tab-input hidden" />
+		</div>
+		<div class="tab-controls-right">
+			<div class="tab-logo-dropdown">
+				<button id="btn-home" class="tab-logo-btn" title="Menu">
+					<img src="Vyper Logo.png" alt="Vyper Menu" class="logo-img" />
+				</button>
+				<div class="tab-logo-menu" id="tab-logo-menu">
+					<a href="index.html" class="tab-logo-item">🏠 Home</a>
+					<a href="games.html" class="tab-logo-item">🎮 Games</a>
+					<a href="settings.html" class="tab-logo-item">⚙️ Settings</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div title="Vyper Logo" class="flex-center logo-wrapper header-center">
-		<img class="logo" src="logo.png" alt="Vyper" />
-		<h1>Vyper | MW</h1>
+		<img class="logo" src="Vyper Logo.png" alt="Vyper" />
+		<h1>Vyper | Proxy</h1>
 	</div>
 	<div class="flex-center desc left-margin">
-		<p>
-			Vyper is an experimental interception based web proxy designed to
-			evade internet censorship, bypass arbitrary web browser restrictions and
-			innovate web proxy technologies.
-		</p>
+		<p style="text-align: center;">Vyper is the best proxy trust.</p>
+
 	</div>
 
 	<form id="sj-form" class="flex-center">
 		<input id="sj-search-engine" value="https://search.brave.com/search?q=%s" type="hidden" />
-		<input id="sj-address" type="text" placeholder="Search the web freely" />
+		<input id="sj-address" type="text" placeholder="Search the web" />
 	</form>
-	<div class="flex-center" style="margin-top: 20px;">
-		<a href="games.html" style="color: white; padding: 10px 24px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; text-decoration: none; font-size: 15px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">🎮 Play Games</a>
-	</div>
 	<div class="desc left-margin">
 		<p id="sj-error"></p>
 		<pre id="sj-error-code"></pre>
