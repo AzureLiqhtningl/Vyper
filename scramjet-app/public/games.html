@@ -1,75 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vyper | Games</title>
-  <link rel="shortcut icon" href="Vyper Logo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index.css" />
-  <style>
-    body {
-      margin: 0;
-      background: #0a0a0a;
-      font-family: Arial, sans-serif;
-      padding-top: 60px;
-    }
-    
-    .back-button {
-      display: inline-block;
-      margin: 20px;
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      font-family: 'JetBrains Mono', monospace;
-      transition: background-color 0.3s ease;
-    }
-    
-    .back-button:hover {
-      background-color: #45a049;
-    }
-    
-    /* Apply JetBrains Mono globally to all game elements */
-    #games * {
-      font-family: 'JetBrains Mono', monospace !important;
-    }
-    
-    /* Specific overrides for search and controls */
-    #games input,
-    #games button,
-    #games input[type="search"],
-    #games input[type="text"],
-    #games span,
-    #games div {
-      font-family: 'JetBrains Mono', monospace !important;
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vyper | Games</title>
+
+    <link rel="shortcut icon" href="Vyper Logo.png" />
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- JetBrains only for Lumin content -->
+    <style>
+        #games * {
+            font-family: 'JetBrains Mono', monospace !important;
+        }
+    </style>
+
+    <script src="index.js" defer></script>
+    <script src="time.js" defer></script>
 </head>
+
 <body>
-  <!-- Top Left Logo -->
-  <div class="top-left-logo">
-    <img src="Vyper Logo.png" alt="Vyper" class="top-logo-img" />
-  </div>
+    <!-- Top Navigation Buttons -->
+    <div class="top-nav-buttons">
+        <a href="index.html" class="nav-button home-button">Home</a>
+        <a href="games.html" class="nav-button games-button">Games</a>
+        <a href="settings.html" class="nav-button settings-button">Settings</a>
+    </div>
 
-  <!-- Top Navigation Buttons -->
-  <div class="top-nav-buttons">
-    <a href="index.html" class="nav-button home-button" title="Home">Home</a>
-    <a href="games.html" class="nav-button games-button" title="Games">Games</a>
-    <a href="settings.html" class="nav-button settings-button" title="Settings">Settings</a>
-  </div>
-  <div id="games"></div>
+    <!-- Games Container -->
+    <div id="games"></div>
 
-  <script src="https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js"></script>
-  <script>
-    Lumin.init({
-      container: '#games',
-      theme: 'dark',
-      onReady: () => console.log('LuminSDK is ready'),
-      onError: (err) => console.error('LuminSDK error:', err),
-    });
-  </script>
+    <script src="https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js"></script>
+    <script>
+        Lumin.init({
+            container: '#games',
+            theme: 'dark',
+            onReady: () => console.log('LuminSDK ready'),
+            onError: (err) => console.error('LuminSDK error:', err),
+        });
+    </script>
 </body>
+
 </html>
+
