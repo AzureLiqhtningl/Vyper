@@ -2,83 +2,91 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-	<title>Vyper | Settings</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Vyper | Settings</title>
 
-	<link rel="shortcut icon" href="Vyper Logo.png" />
-
-	<link rel="stylesheet" href="index.css" />
+    <link rel="shortcut icon" href="Vyper Logo.png" />
+    <link rel="stylesheet" href="index.css" />
+    <script src="config.js"></script>
+    <script src="index.js" defer></script>
+    <script src="time.js" defer></script>
 </head>
 
 <body>
-	<!-- Top Left Logo -->
-	<div class="top-left-logo">
-		<img src="Vyper Logo.png" alt="Vyper" class="top-logo-img" />
-	</div>
+    <!-- Top Navigation Buttons -->
+    <div class="top-nav-buttons">
+        <a href="index.html" class="nav-button home-button" title="Home">Home</a>
+        <a href="games.html" class="nav-button games-button" title="Games">Games</a>
+        <a href="settings.html" class="nav-button settings-button" title="Settings">Settings</a>
+    </div>
 
-	<!-- Top Navigation Buttons -->
-	<div class="top-nav-buttons">
-		<a href="index.html" class="nav-button home-button" title="Home">Home</a>
-		<a href="games.html" class="nav-button games-button" title="Games">Games</a>
-		<a href="settings.html" class="nav-button settings-button" title="Settings">Settings</a>
-	</div>
+    <div class="settings-container">
+        <div class="settings-menu">
+            <button class="settings-item active" data-section="credits">
+                <span class="settings-icon">ℹ️</span>
+                <span class="settings-label">Credits</span>
+            </button>
+            <button class="settings-item" data-section="themes">
+                <span class="settings-icon">🎨</span>
+                <span class="settings-label">Themes</span>
+            </button>
+            <button class="settings-item" data-section="partners">
+                <span class="settings-icon">🤝</span>
+                <span class="settings-label">Partners</span>
+            </button>
+            <button class="settings-item" data-section="cloaking">
+                <span class="settings-icon">👻</span>
+                <span class="settings-label">Cloaking</span>
+            </button>
+        </div>
 
-	<div class="settings-container">
-		<div class="settings-menu">
-			<button class="settings-item active" data-section="credits">
-				<span class="settings-icon">ℹ️</span>
-				<span class="settings-label">Credits</span>
-			</button>
-			<button class="settings-item" data-section="themes">
-				<span class="settings-icon">🎨</span>
-				<span class="settings-label">Themes</span>
-			</button>
-			<button class="settings-item" data-section="partners">
-				<span class="settings-icon">🤝</span>
-				<span class="settings-label">Partners</span>
-			</button>
-			<button class="settings-item" data-section="cloaking">
-				<span class="settings-icon">👻</span>
-				<span class="settings-label">Cloaking</span>
-			</button>
-		</div>
+        <div class="settings-content">
+            <div id="credits" class="content-section active">
+                <h2>Credits</h2>
+                <div class="credits-section">
+                    <h3>Owners</h3>
+                    <p>𝖜𝖝𝖗𝖒𝖍𝖔𝖑𝖊 👑 & AzureLiqhtning</p>
+                </div>
+                <div class="credits-section">
+                    <h3>Developers</h3>
+                    <p>King</p>
+                </div>
+                <div class="credits-section">
+                    <h3>Games</h3>
+                    <p>LuminSDK - Magic Leap</p>
+                </div>
+            </div>
 
-		<div class="settings-content">
-			<div id="credits" class="content-section active">
-				<h2>Credits</h2>
-				<div class="credits-section">
-					<h3>Owners</h3>
-					<p>𝖜𝖝𝖗𝖒𝖍𝖔𝖑𝖊 👑 & AzureLiqhtning</p>
-				</div>
-				<div class="credits-section">
-					<h3>Developers</h3>
-					<p>King</p>
-				</div>
-				<div class="credits-section">
-					<h3>Games</h3>
-					<p>LuminSDK  -  Magic Leap</p>
-				</div>
-			</div>
-			<div id="themes" class="content-section">
-				<h2>Themes</h2>
-				<p>Currently not available!</p>
-				<p>Will be added soon!</p>
-			</div>
-			<div id="partners" class="content-section">
-				<h2>Partners</h2>
-				<p>prxy info ℹ️  -  King</p>
-				<p>Eben Lee 🤩</p>
-			</div>
-			<div id="cloaking" class="content-section">
-				<h2>Cloaking</h2>
-				<p>Currently not available!</p>
-				<p>Will be added soon!</p>
-			</div>
-		</div>
-	</div>
+            <div id="themes" class="content-section">
+                <h2>Themes</h2>
+                <div class="theme-grid">
+                    <button class="theme-option" data-theme="neon">Neon Green</button>
+                    <button class="theme-option" data-theme="blue">Blue</button>
+                    <button class="theme-option" data-theme="red">Red</button>
+                    <button class="theme-option" data-theme="gray">Black/Gray</button>
+                </div>
+            </div>
 
-	<script src="settings.js" defer></script>
+            <div id="partners" class="content-section">
+                <h2>Partners</h2>
+                <p>prxy info ℹ️ - King</p>
+                <p>Eben Lee 🤩</p>
+            </div>
+
+         <div id="cloaking" class="content-section">
+    <h2>Cloaking</h2>
+    <p>Open Vyper inside an about:blank window for stealth mode.</p>
+
+    <button id="cloak-btn" class="theme-option" style="margin-top: 10px;">
+        Open Vyper in about:blank
+    </button>
+</div>
+
+        </div>
+    </div>
+
+    <script src="settings.js" defer></script>
 </body>
 
 </html>
