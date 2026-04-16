@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-   FONTS
+   FONT IMPORTS
 -------------------------------------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap");
@@ -8,13 +8,22 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
 
 /* --------------------------------------------------
-   GLOBAL BODY
+   THEME VARIABLES
+-------------------------------------------------- */
+:root {
+    --accent: #58F00C;
+    --bg: #000000;
+    --text: #C4C4C4;
+}
+
+/* --------------------------------------------------
+   GLOBAL
 -------------------------------------------------- */
 body {
     font-family: "Pixelify Sans", Arial, Helvetica, sans-serif;
     margin: 0;
-    background: #000;
-    color: #C4C4C4;
+    background: var(--bg);
+    color: var(--text);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -23,30 +32,50 @@ body {
 }
 
 @keyframes fadeInPage {
-    to { opacity: 1; }
+    to {
+        opacity: 1;
+    }
 }
 
-/* --------------------------------------------------
-   TITLES (Space Mono + pulsing neon)
--------------------------------------------------- */
-h1, h2, h3, h4, h5, h6 {
+/* Headings: Space Mono + neon pulse */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Space Mono", monospace;
-    color: #58F00C;
+    color: var(--accent);
     text-shadow:
-        0 0 8px #58F00C,
-        0 0 16px #58F00C,
-        0 0 24px #58F00C;
+        0 0 8px var(--accent),
+        0 0 16px var(--accent),
+        0 0 24px var(--accent);
     animation: neonPulse 2.5s ease-in-out infinite;
 }
 
 @keyframes neonPulse {
-    0% { text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C, 0 0 18px #58F00C; }
-    50% { text-shadow: 0 0 12px #58F00C, 0 0 24px #58F00C, 0 0 36px #58F00C; }
-    100% { text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C, 0 0 18px #58F00C; }
+    0% {
+        text-shadow:
+            0 0 6px var(--accent),
+            0 0 12px var(--accent),
+            0 0 18px var(--accent);
+    }
+    50% {
+        text-shadow:
+            0 0 12px var(--accent),
+            0 0 24px var(--accent),
+            0 0 36px var(--accent);
+    }
+    100% {
+        text-shadow:
+            0 0 6px var(--accent),
+            0 0 12px var(--accent),
+            0 0 18px var(--accent);
+    }
 }
 
 /* --------------------------------------------------
-   LOGO TITLE (STATIC)
+   LOGO TITLE (Vyper text under logo)
 -------------------------------------------------- */
 .logo-wrapper {
     margin-top: 20px;
@@ -54,95 +83,73 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo-wrapper h1 {
     font-family: "Exo 2", sans-serif !important;
-    color: #58F00C;
+    color: var(--accent);
     text-shadow:
-        0 0 6px #58F00C,
-        0 0 12px #58F00C;
+        0 0 6px var(--accent),
+        0 0 12px var(--accent);
     white-space: nowrap;
     border: none;
     width: auto;
 }
 
 /* --------------------------------------------------
-   TOP CENTER GAMES BUTTON
+   D3 MODE: LOGOS
+   - Remove top-left logo everywhere
+   - Keep main game-page logo
 -------------------------------------------------- */
-.top-games-btn {
+
+/* Hide top-left logo + variants */
+.top-left-logo,
+.top-left-dropdown,
+.top-logo-img {
+    display: none !important;
+}
+
+/* Keep main game-page logo */
+.logo {
+    display: block !important;
+    height: 120px !important;
+    width: auto !important;
+    object-fit: contain;
+}
+
+/* --------------------------------------------------
+   TOP NAV BUTTONS (Home / Games / Settings)
+-------------------------------------------------- */
+.top-nav-buttons {
     position: fixed;
     top: 16px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
+    z-index: 1999;
+    display: flex;
+    gap: 12px;
 }
 
-.games-btn {
-    font-family: "Atomic Age", cursive;
-    font-size: 22px;
-    color: #58F00C;
+.nav-button {
     text-decoration: none;
-    padding: 10px 25px;
-    border: 2px solid #58F00C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    border: 2px solid var(--accent);
     border-radius: 8px;
-    text-shadow: 0 0 8px #58F00C;
-    transition: 0.25s ease;
-    white-space: nowrap;
+    background: rgba(88, 240, 12, 0.05);
+    color: var(--accent);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    text-shadow: 0 0 6px var(--accent);
+    transition: all 0.2s ease;
+    font-weight: bold;
 }
 
-.games-btn:hover {
-    color: #111;
-    background: #58F00C;
-    box-shadow: 0 0 15px #58F00C;
-}
-
-/* --------------------------------------------------
-   UI ELEMENTS (Atomic Age)
--------------------------------------------------- */
-#sj-address,
-footer a,
-footer span,
-#sj-error,
-#sj-error-code,
-.credit label,
-.credit a {
-    font-family: "Atomic Age", cursive;
-    color: #C4C4C4;
-}
-
-a:hover,
-button:hover {
-    color: #58F00C;
-    text-shadow:
-        0 0 6px #58F00C,
-        0 0 12px #58F00C;
+.nav-button:hover {
+    background: rgba(88, 240, 12, 0.15);
+    box-shadow: 0 0 12px rgba(88, 240, 12, 0.5);
 }
 
 /* --------------------------------------------------
-   SEARCH BAR
--------------------------------------------------- */
-#sj-address {
-    font-family: 'JetBrains Mono', monospace;
-    background: none;
-    padding: 0px 17px;
-    height: 48px;
-    border: 1px solid rgb(123, 255, 0);
-    color: #C4C4C4;
-    border-radius: 50px;
-    outline: none;
-    width: 350px;
-    margin-top: 5px;
-    caret-color: #58F00C;
-    transition:
-        border-radius 0.1s,
-        box-shadow 0.3s ease;
-}
-
-#sj-address:focus {
-    border: 1px solid #58F00C;
-    box-shadow: 0 0 12px #58F00C;
-    border-radius: 6px;
-}
-
-/* --------------------------------------------------
-   BROWSER TAB
+   BROWSER TAB (Cloaking bar)
 -------------------------------------------------- */
 .browser-tab {
     position: fixed;
@@ -151,14 +158,14 @@ button:hover {
     right: 0;
     height: 45px;
     background: #2a2a2a;
-    border-bottom: 2px solid #58F00C;
+    border-bottom: 2px solid var(--accent);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
     z-index: 2000;
     box-shadow: 0 0 15px rgba(88, 240, 12, 0.3);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     animation: slideDown 0.4s ease;
 }
 
@@ -189,11 +196,11 @@ button:hover {
     gap: 8px;
     flex: 1;
     background: rgba(88, 240, 12, 0.05);
-    border: 1px solid #58F00C;
+    border: 1px solid var(--accent);
     border-radius: 20px;
     padding: 6px 18px;
-    color: #58F00C;
-    text-shadow: 0 0 8px #58F00C;
+    color: var(--accent);
+    text-shadow: 0 0 8px var(--accent);
     font-size: 14px;
     transition: all 0.2s ease;
     margin: 0 12px;
@@ -206,15 +213,15 @@ button:hover {
 
 .tab-btn {
     background: none;
-    border: 1px solid #58F00C;
-    color: #58F00C;
+    border: 1px solid var(--accent);
+    color: var(--accent);
     font-size: 18px;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 4px;
-    text-shadow: 0 0 6px #58F00C;
+    text-shadow: 0 0 6px var(--accent);
     transition: all 0.2s ease;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -224,7 +231,7 @@ button:hover {
 
 .tab-btn:hover {
     background: rgba(88, 240, 12, 0.2);
-    box-shadow: 0 0 10px #58F00C;
+    box-shadow: 0 0 10px var(--accent);
 }
 
 .tab-btn:active {
@@ -284,7 +291,7 @@ button:hover {
     top: calc(100% + 2px);
     right: 0;
     background: #2a2a2a;
-    border: 1px solid #58F00C;
+    border: 1px solid var(--accent);
     border-radius: 6px;
     min-width: 140px;
     box-shadow: 0 0 15px rgba(88, 240, 12, 0.3);
@@ -304,11 +311,11 @@ button:hover {
 .tab-logo-item {
     display: block;
     padding: 10px 14px;
-    color: #58F00C;
+    color: var(--accent);
     text-decoration: none;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 13px;
-    text-shadow: 0 0 6px #58F00C;
+    text-shadow: 0 0 6px var(--accent);
     transition: all 0.2s ease;
     border-bottom: 1px solid rgba(88, 240, 12, 0.2);
 }
@@ -338,14 +345,14 @@ button:hover {
 .tab-input {
     background: none;
     border: none;
-    color: #58F00C;
-    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-family: "JetBrains Mono", monospace;
     font-size: 14px;
-    text-shadow: 0 0 8px #58F00C;
+    text-shadow: 0 0 8px var(--accent);
     outline: none;
     flex: 1;
     text-align: center;
-    caret-color: #58F00C;
+    caret-color: var(--accent);
 }
 
 .tab-input.hidden {
@@ -356,196 +363,143 @@ button:hover {
     display: none;
 }
 
-/* Adjust body padding when tab is visible */
+/* Body padding when tab visible */
 body:has(.browser-tab:not(.hidden)) {
     padding-top: 45px;
 }
 
-/* Top Navigation Buttons */
-.top-nav-buttons {
-    position: fixed;
-    top: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1999;
-    display: flex;
-    gap: 12px;
+/* --------------------------------------------------
+   SEARCH BAR (JetBrains Mono)
+-------------------------------------------------- */
+#sj-address {
+    font-family: "JetBrains Mono", monospace;
+    background: none;
+    padding: 0 17px;
+    height: 48px;
+    border: 1px solid var(--accent);
+    color: var(--text);
+    border-radius: 50px;
+    outline: none;
+    width: 350px;
+    margin-top: 5px;
+    caret-color: var(--accent);
+    transition:
+        border-radius 0.1s,
+        box-shadow 0.3s ease;
 }
 
-.nav-button {
-    text-decoration: none;
+#sj-address:focus {
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    border-radius: 6px;
+}
+
+/* --------------------------------------------------
+   TIME / DATE / DISCORD UNDER SEARCH
+-------------------------------------------------- */
+#info-bar {
+    margin-top: 20px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 8px 20px;
-    border: 2px solid #58F00C;
-    border-radius: 8px;
-    background: rgba(88, 240, 12, 0.05);
-    color: #58F00C;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    text-shadow: 0 0 6px #58F00C;
-    transition: all 0.2s ease;
-    font-weight: bold;
-}
-
-.nav-button:hover {
-    background: rgba(88, 240, 12, 0.15);
-    box-shadow: 0 0 12px rgba(88, 240, 12, 0.5);
-}
-
-/* --------------------------------------------------
-   NEON SPINNER
--------------------------------------------------- */
-#neon-spinner {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 99999;
-}
-
-.spinner-ring {
-    width: 80px;
-    height: 80px;
-    border: 6px solid rgba(88, 240, 12, 0.2);
-    border-top-color: #58F00C;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite, glowPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes glowPulse {
-    0% { box-shadow: 0 0 8px #58F00C; }
-    50% { box-shadow: 0 0 20px #58F00C; }
-    100% { box-shadow: 0 0 8px #58F00C; }
-}
-
-/* --------------------------------------------------
-   GAMES PAGE GRID + NEON HOVER ANIMATION
--------------------------------------------------- */
-.games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 25px;
-    width: 80%;
-    margin-top: 40px;
-}
-
-.games-grid .game-card {
-    background: #111;
-    border: 2px solid #58F00C;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    color: #C4C4C4;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-/* 🔥 NEON HOVER ANIMATION */
-.games-grid .game-card:hover {
-    transform: translateY(-6px) scale(1.03);
-    border-color: #58F00C;
-    box-shadow:
-        0 0 10px #58F00C,
-        0 0 20px #58F00C,
-        0 0 30px #58F00C;
-    color: #111;
-    background: #58F00C;
-}
-
-/* --------------------------------------------------
-   LAYOUT
--------------------------------------------------- */
-.flex-center { display: flex; justify-content: center; }
-.header-center { align-items: center; flex-direction: column; margin-top: 10%; }
-.left-margin { margin: 0px 16px; }
-
-#sj-frame {
-    border: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #111;
-}
-
-#sj-error { color: #ff6666 !important; white-space: pre-wrap; }
-#sj-error-code { font-size: 12px; color: #C4C4C4; }
-
-.logo { height: 32vh; }
-
-footer {
-    margin: 0 16px;
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    line-height: 30px;
-    margin-bottom: 20px;
-}
-
-footer > div {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 15px;
-}
-
-footer a,
-footer span {
-    margin: 0 15px;
-    text-decoration: none;
-    font-size: 15px;
-}
-
-footer a:hover {
-    text-decoration: underline;
-    color: #58F00C;
-}
-
-.desc p {
-    width: 560px;
-    color: #C4C4C4;
-}
-
-.credit {
-    border-radius: 10px;
-    padding: 10px;
-    display: block;
-    border: #C4C4C4 1px solid;
-    color: #C4C4C4;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 15px;
-}
-
-.credit label {
-    margin-left: auto;
-    margin-right: 15px;
-}
-
-.credit pre {
-    display: none;
     width: 100%;
 }
 
-.credit label::after {
-    content: "show license";
+.info-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+#info-bar p {
+    margin: 0;
+    font-size: 18px;
+    font-family: "Pixelify Sans", sans-serif;
+    color: var(--text);
+    text-shadow: 0 0 6px var(--accent);
+}
+
+#discord-link {
+    margin-top: 4px;
+    font-family: "Atomic Age", cursive;
+    color: var(--accent);
+    text-shadow: 0 0 8px var(--accent);
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.2s ease;
+}
+
+#discord-link:hover {
+    color: #111;
+    background: var(--accent);
+    padding: 4px 12px;
+    border-radius: 6px;
+    box-shadow: 0 0 12px var(--accent);
+}
+
+/* --------------------------------------------------
+   RIGHT-SIDE COLLAPSIBLE INFO PANEL
+-------------------------------------------------- */
+#info-panel {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border-left: 2px solid var(--accent);
+    border-radius: 10px 0 0 10px;
+    width: 260px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transition: width 0.3s ease;
+    z-index: 9999;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+#info-panel.collapsed {
+    width: 50px;
+}
+
+#info-toggle {
+    width: 50px;
+    height: 50px;
+    background: var(--accent);
+    color: #000;
+    font-size: 28px;
+    font-family: "Atomic Age", cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 0 12px var(--accent);
 }
 
-.credit input:checked + label::after {
-    content: "hide license";
+#info-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 1;
+    transition: opacity 0.25s ease;
 }
 
-.credit input:checked ~ pre {
-    display: block;
+#info-panel.collapsed #info-content {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#info-content h3 {
+    margin: 0;
+    font-family: "Space Mono", monospace;
+    color: var(--accent);
+    text-shadow: 0 0 8px var(--accent);
+}
+
+#online-count {
+    font-size: 18px;
+    color: var(--text);
+    text-shadow: 0 0 6px var(--accent);
 }
 
 /* --------------------------------------------------
@@ -580,49 +534,27 @@ footer a:hover {
     background: rgba(88, 240, 12, 0.05);
     border: 1px solid rgba(88, 240, 12, 0.3);
     border-radius: 8px;
-    color: #C4C4C4;
-    font-family: 'JetBrains Mono', monospace;
+    color: var(--text);
+    font-family: "JetBrains Mono", monospace;
     font-size: 14px;
     cursor: pointer;
     transition: all 0.2s ease;
     text-align: left;
-    position: relative;
 }
 
 .settings-item:hover {
     background: rgba(88, 240, 12, 0.1);
-    border-color: #58F00C;
-    color: #58F00C;
-    text-shadow: 0 0 6px #58F00C;
+    border-color: var(--accent);
+    color: var(--accent);
+    text-shadow: 0 0 6px var(--accent);
 }
 
 .settings-item.active {
     background: rgba(88, 240, 12, 0.2);
-    border-color: #58F00C;
-    color: #58F00C;
-    text-shadow: 0 0 6px #58F00C;
+    border-color: var(--accent);
+    color: var(--accent);
+    text-shadow: 0 0 6px var(--accent);
     box-shadow: 0 0 8px rgba(88, 240, 12, 0.3);
-}
-
-.settings-icon {
-    font-size: 18px;
-    flex-shrink: 0;
-}
-
-.settings-label {
-    flex: 1;
-}
-
-.updated-badge {
-    background: #58F00C;
-    color: #000;
-    font-size: 10px;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-weight: bold;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.5px;
-    flex-shrink: 0;
 }
 
 .settings-content {
@@ -654,164 +586,191 @@ footer a:hover {
     }
 }
 
-.content-section h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 24px;
+/* --------------------------------------------------
+   LAYOUT / FOOTER / MISC
+-------------------------------------------------- */
+.flex-center {
+    display: flex;
+    justify-content: center;
 }
 
-.content-section p {
-    line-height: 1.6;
-    color: #C4C4C4;
+.header-center {
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10%;
 }
 
-.overview-section h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 18px;
+.left-margin {
+    margin: 0 16px;
 }
 
-.overview-section p {
-    font-size: 16px;
-    color: #58F00C;
-    text-shadow: 0 0 6px #58F00C;
+#sj-frame {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #111111;
 }
 
-.games-list {
+#sj-error {
+    color: #ff6666 !important;
+    white-space: pre-wrap;
+}
+
+#sj-error-code {
+    font-size: 12px;
+    color: var(--text);
+}
+
+footer {
+    margin: 0 16px;
+    margin-top: auto;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    line-height: 30px;
+    margin-bottom: 20px;
 }
 
-.game-item {
+footer > div {
     display: flex;
-    justify-content: flex-start;
+    justify-content: left;
     align-items: center;
-    padding: 12px 16px;
-    background: rgba(88, 240, 12, 0.05);
-    border: 1px solid rgba(88, 240, 12, 0.3);
-    border-radius: 6px;
-    transition: all 0.2s ease;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
 }
 
-.game-item:hover {
-    background: rgba(88, 240, 12, 0.1);
-    border-color: #58F00C;
-}
-
-.game-name {
-    color: #58F00C;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: bold;
-    text-shadow: 0 0 6px #58F00C;
-}
-
-.game-credit {
-    color: #C4C4C4;
-    font-size: 14px;
-    margin-left: auto;
-}
-
-/* --------------------------------------------------
-   TOP LEFT LOGO (Static)
--------------------------------------------------- */
-.top-left-logo {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    z-index: 1998;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.top-logo-img {
-    height: 32px;
-    width: 32px;
-    object-fit: contain;
-    opacity: 0.8;
-}
-
-/* --------------------------------------------------
-   TOP LEFT LOGO DROPDOWN (Settings Page)
--------------------------------------------------- */
-.top-left-dropdown {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    z-index: 1999;
-    display: inline-block;
-}
-
-.logo-btn {
-    background: none;
-    border: 2px solid #58F00C;
-    cursor: pointer;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-}
-
-.logo-btn:hover {
-    background: rgba(88, 240, 12, 0.1);
-    box-shadow: 0 0 8px rgba(88, 240, 12, 0.3);
-}
-
-.logo-img-small {
-    height: 24px;
-    width: 24px;
-    object-fit: contain;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
-}
-
-.logo-btn:hover .logo-img-small {
-    opacity: 1;
-}
-
-.logo-menu {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    background: #2a2a2a;
-    border: 1px solid #58F00C;
-    border-radius: 6px;
-    min-width: 140px;
-    box-shadow: 0 0 15px rgba(88, 240, 12, 0.3);
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    transition: all 0.2s ease;
-    z-index: 2000;
-}
-
-.top-left-dropdown:hover .logo-menu,
-.logo-menu:hover {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.logo-item {
-    display: block;
-    padding: 10px 14px;
-    color: #58F00C;
+footer a,
+footer span {
+    margin: 0 15px;
     text-decoration: none;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    text-shadow: 0 0 6px #58F00C;
-    transition: all 0.2s ease;
-    border-bottom: 1px solid rgba(88, 240, 12, 0.2);
+    font-size: 15px;
+    font-family: "Atomic Age", cursive;
+    color: var(--text);
 }
 
-.logo-item:last-child {
-    border-bottom: none;
+footer a:hover {
+    text-decoration: underline;
+    color: var(--accent);
 }
 
-.logo-item:hover {
-    background: rgba(88, 240, 12, 0.1);
-    box-shadow: inset 0 0 8px rgba(88, 240, 12, 0.2);
+.desc p {
+    width: 560px;
+    color: var(--text);
 }
+
+.credit {
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid var(--text);
+    color: var(--text);
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.credit label {
+    margin-left: auto;
+    margin-right: 15px;
+    font-family: "Atomic Age", cursive;
+}
+
+.credit pre {
+    display: none;
+    width: 100%;
+}
+
+.credit label::after {
+    content: "show license";
+    cursor: pointer;
+}
+
+.credit input:checked + label::after {
+    content: "hide license";
+}
+
+.credit input:checked ~ pre {
+    display: block;
+}
+/* Fix info panel clipping when expanded */
+/* --------------------------------------------------
+   RIGHT-SIDE STATIC INFO PANEL (NO COLLAPSING)
+-------------------------------------------------- */
+#info-panel {
+    position: fixed;
+    top: 50%;
+    right: 20px; /* was 0 — moves panel left */
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border-left: 2px solid var(--accent);
+    border-radius: 10px;
+    width: 260px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 9999;
+    font-family: "Pixelify Sans", sans-serif;
+    padding-bottom: 10px;
+}
+
+/* Remove collapsing behavior entirely */
+#info-toggle {
+    display: none !important;
+}
+
+#info-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+#info-content h3 {
+    margin: 0;
+    font-family: "Space Mono", monospace;
+    color: var(--accent);
+    text-shadow: 0 0 8px var(--accent);
+}
+
+#online-count {
+    font-size: 18px;
+    color: var(--text);
+    text-shadow: 0 0 6px var(--accent);
+}
+
+/* Fix overlap: push Games page content below nav buttons */
+#games {
+    margin-top: 70px !important;
+}
+
+/* THEME BUTTONS + CLOAK BUTTON — MATCH VYPER STYLE */
+.theme-option,
+#cloak-btn {
+    font-family: "JetBrains Mono", monospace;
+    padding: 10px 20px;
+    border: 2px solid var(--accent);
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--accent);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    text-shadow: 0 0 6px var(--accent);
+    transition: 0.2s ease;
+    display: inline-block;
+    margin: 6px;
+}
+
+.theme-option:hover,
+#cloak-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 12px var(--accent);
+}
+
+.theme-option:active,
+#cloak-btn:active {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 18px var(--accent);
+}
+
