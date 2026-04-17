@@ -1,46 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
     <title>Vyper | Games</title>
 
-    <link rel="shortcut icon" href="Vyper Logo.png" />
-    <link rel="stylesheet" href="index.css" />
-
-    <!-- JetBrains only for Lumin content -->
-    <style>
-        #games * {
-            font-family: 'JetBrains Mono', monospace !important;
-        }
-    </style>
-
+    <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
-    <script src="time.js" defer></script>
+    <script src="cloak-dev.js" defer></script>
 </head>
 
 <body>
-    <!-- Top Navigation Buttons -->
-    <div class="top-nav-buttons">
-        <a href="index.html" class="nav-button home-button">Home</a>
-        <a href="games.html" class="nav-button games-button">Games</a>
-        <a href="settings.html" class="nav-button settings-button">Settings</a>
+
+    <!-- NAV BAR -->
+    <div id="navbar">
+        <button onclick="location.href='index.html'" class="nav-btn">Home</button>
+        <button onclick="location.href='games.html'" class="nav-btn active">Games</button>
+        <button onclick="location.href='settings.html'" class="nav-btn">Settings</button>
     </div>
 
-    <!-- Games Container -->
-    <div id="games"></div>
+    <!-- GAMES PAGE CONTENT -->
+    <div id="games" class="games-container">
+        <h1 class="page-title">Games</h1>
 
-    <script src="https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js"></script>
-    <script>
-        Lumin.init({
-            container: '#games',
-            theme: 'dark',
-            onReady: () => console.log('LuminSDK ready'),
-            onError: (err) => console.error('LuminSDK error:', err),
-        });
-    </script>
+        <div class="games-grid">
+            <!-- Add your game buttons here -->
+        </div>
+    </div>
+
 </body>
-
 </html>
 
