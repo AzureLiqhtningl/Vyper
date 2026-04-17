@@ -774,3 +774,107 @@ footer a:hover {
     box-shadow: 0 0 18px var(--accent);
 }
 
+/* Proxy bar layout */
+#proxy-bar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+}
+
+.proxy-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Movie search bar */
+.movie-search-input {
+    font-family: "JetBrains Mono", monospace;
+    padding: 8px 12px;
+    border: 2px solid var(--accent);
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--text);
+    border-radius: 8px;
+    width: 220px;
+    outline: none;
+    text-shadow: 0 0 6px var(--accent);
+}
+
+.movie-search-input:focus {
+    box-shadow: 0 0 12px var(--accent);
+}
+
+/* Search button inherits .theme-option styling */
+.movie-search-btn {
+    padding: 8px 14px;
+}
+
+/* Movie iframe fullscreen */
+#movie-frame {
+    position: fixed;
+    top: 120px; /* below nav + proxy bar */
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 120px);
+    border: none;
+    background: black;
+}
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Pixelify Sans", sans-serif;
+}
+.logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+/* NAV BAR */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+}
+
+/* NAV BUTTONS */
+.nav-btn {
+    font-family: "JetBrains Mono", monospace;
+    padding: 10px 20px;
+    border: 2px solid var(--accent);
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--accent);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    text-shadow: 0 0 6px var(--accent);
+    transition: 0.2s ease;
+}
+
+.nav-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 12px var(--accent);
+}
+
+.nav-btn:active {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 18px var(--accent);
+}
+
+/* ACTIVE PAGE BUTTON */
+.nav-btn.active {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 14px var(--accent);
+}
