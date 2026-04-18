@@ -111,6 +111,9 @@ h6 {
     height: 120px !important;
     width: auto !important;
     object-fit: contain;
+
+    /* NEW FIX — shift logo to the right */
+    margin-left: 35px;
 }
 
 /* --------------------------------------------------
