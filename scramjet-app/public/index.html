@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Vyper</title>
+    <meta charset="UTF-8" />
+    <title>Vyper | Proxy</title>
 
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- JS -->
     <script src="index.js" defer></script>
     <script src="time.js" defer></script>
     <script src="info-panel.js" defer></script>
     <script src="cloak-dev.js" defer></script>
+    <script src="settings.js" defer></script>
 </head>
 
 <body>
+
+    <!-- CLOAKING BROWSER TAB -->
+    <div class="browser-tab hidden" id="browser-tab">
+        <div class="tab-controls-left">
+            <button class="tab-btn" id="tab-back">⟵</button>
+            <button class="tab-btn" id="tab-forward">⟶</button>
+            <button class="tab-btn" id="tab-refresh">⟳</button>
+        </div>
+
+        <div class="tab-center">
+            <input id="sj-address" class="tab-input" placeholder="Search or enter URL..." />
+        </div>
+
+        <div class="tab-controls-right">
+            <button class="tab-btn" id="tab-close">✕</button>
+        </div>
+    </div>
 
     <!-- NAV BAR -->
     <div id="navbar">
@@ -21,19 +41,39 @@
     </div>
 
     <!-- MAIN CONTENT -->
-    <div class="main-container">
-        <h1 class="title">Vyper</h1>
+    <div class="header-center flex-center">
 
-        <div class="search-container">
-            <input id="searchInput" type="text" placeholder="Search the web..." />
-            <button id="searchBtn" class="theme-option">Search</button>
+        <!-- LOGO + TITLE -->
+        <div class="logo-wrapper">
+            <img src="Vyper Logo.png" class="logo" alt="Vyper Logo" />
+            <h1>Vyper | Proxy</h1>
+            <p class="subtitle">the best proxy trust.</p>
         </div>
 
-        <div id="timeDisplay"></div>
-        <div id="discordLink">
-            <a href="https://discord.gg/Sbv6mx366h" target="_blank">Join the Discord</a>
+        <!-- SEARCH BAR (REAL ONE: #sj-address) -->
+        <div class="search-container">
+            <input id="sj-address" type="text" placeholder="Search the web..." />
+        </div>
+
+        <!-- TIME + DATE + DISCORD -->
+        <div id="info-bar">
+            <div class="info-inner">
+                <p id="current-time"></p>
+                <p id="current-date"></p>
+                <a id="discord-link" href="https://discord.gg/Sbv6mx366h" target="_blank">Join the Discord</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT INFO PANEL -->
+    <div id="info-panel">
+        <div id="info-content">
+            <h3>Vyper Info</h3>
+            <p id="online-count">Users Online: ...</p>
         </div>
     </div>
 
 </body>
 </html>
+
+
