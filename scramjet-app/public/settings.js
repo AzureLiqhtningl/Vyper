@@ -1,19 +1,22 @@
-// THEME DEFINITIONS
-const themes = {
+/* ============================================================
+   GLOBAL THEME SYSTEM (WORKS ON ALL PAGES)
+   ============================================================ */
+
+const VYPER_THEMES = {
     neon: {
         accent: "#58F00C",
         bg: "#000000",
         text: "#C4C4C4"
     },
-    blue: {
-        accent: "#4DA3FF",
-        bg: "#000814",
-        text: "#D0E7FF"
-    },
     red: {
         accent: "#FF3B3B",
         bg: "#0A0000",
         text: "#FFD6D6"
+    },
+    blue: {
+        accent: "#4DA3FF",
+        bg: "#000814",
+        text: "#D0E7FF"
     },
     gray: {
         accent: "#AAAAAA",
@@ -22,24 +25,52 @@ const themes = {
     }
 };
 
-// APPLY + SAVE THEME
-function applyTheme(theme) {
+const THEME_KEY = "vyper-theme-name";
+const SCHOOLOGY_KEY = "vyper-schoology-enabled";
+
+/* APPLY THEME BY NAME */
+function applyThemeByName(name) {
+    const theme = VYPER_THEMES[name] || VYPER_THEMES.neon;
+
     document.documentElement.style.setProperty("--accent", theme.accent);
     document.documentElement.style.setProperty("--bg", theme.bg);
     document.documentElement.style.setProperty("--text", theme.text);
 
-    localStorage.setItem("vyper-theme", JSON.stringify(theme));
+    localStorage.setItem(THEME_KEY, name);
 }
 
-// THEME BUTTONS
-document.querySelectorAll(".theme-option").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const themeName = btn.dataset.theme;
-        applyTheme(themes[themeName]);
+/* APPLY SCHOOLOGY OVERRIDE IF ENABLED */
+function applySchoologyOverrideIfNeeded() {
+    const enabled = localStorage.getItem(SCHOOLOGY_KEY) === "true";
+    if (!enabled) return;
+
+    document.documentElement.style.setProperty("--accent", "#1976d2");
+    document.documentElement.style.setProperty("--bg", "#f5f7fa");
+    document.documentElement.style.setProperty("--text", "#1a1a1a");
+}
+
+/* LOAD THEME ON EVERY PAGE */
+document.addEventListener("DOMContentLoaded", () => {
+    const savedName = localStorage.getItem(THEME_KEY) || "neon";
+    applyThemeByName(savedName);
+    applySchoologyOverrideIfNeeded();
+
+    // Wire theme buttons (only exists on settings page)
+    document.querySelectorAll(".theme-option").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const themeName = btn.dataset.theme;
+            if (themeName && VYPER_THEMES[themeName]) {
+                applyThemeByName(themeName);
+                applySchoologyOverrideIfNeeded();
+            }
+        });
     });
 });
 
-// SETTINGS MENU SWITCHING
+/* ============================================================
+   SETTINGS MENU SWITCHING
+   ============================================================ */
+
 document.querySelectorAll(".settings-item").forEach(item => {
     item.addEventListener("click", () => {
         document.querySelectorAll(".settings-item").forEach(i => i.classList.remove("active"));
@@ -50,30 +81,3 @@ document.querySelectorAll(".settings-item").forEach(item => {
         document.getElementById(section).classList.add("active");
     });
 });
-// CLOAKING BUTTON — OPEN VYPER IN ABOUT:BLANK
-const cloakBtn = document.getElementById("cloak-btn");
-
-if (cloakBtn) {
-    cloakBtn.addEventListener("click", () => {
-        const win = window.open("about:blank", "_blank");
-        if (win) {
-            win.document.write(`
-                <iframe src="index.html" style="
-                    position:fixed;
-                    top:0;
-                    left:0;
-                    width:100vw;
-                    height:100vh;
-                    border:none;
-                    margin:0;
-                    padding:0;
-                    overflow:hidden;
-                    z-index:999999;
-                "></iframe>
-            `);
-            win.document.close();
-        } else {
-            alert("Your browser blocked the popup. Allow popups to use cloaking.");
-        }
-    });
-}
