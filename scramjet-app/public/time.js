@@ -4,13 +4,11 @@ function updateDateTime() {
 
     const timeOptions = {
         hour: "numeric",
-        minute: "numeric",
-        second: "numeric"
+        minute: "numeric"
     };
 
     const dateOptions = {
         weekday: "long",
-        year: "numeric",
         month: "long",
         day: "numeric"
     };
@@ -19,10 +17,10 @@ function updateDateTime() {
     const dateEl = document.getElementById("current-date");
 
     if (timeEl) {
-        timeEl.textContent = "Time: " + now.toLocaleTimeString("en-US", timeOptions);
+        timeEl.textContent = now.toLocaleTimeString("en-US", timeOptions);
     }
     if (dateEl) {
-        dateEl.textContent = "Date: " + now.toLocaleDateString("en-US", dateOptions);
+        dateEl.textContent = now.toLocaleDateString("en-US", dateOptions);
     }
 }
 
@@ -43,4 +41,3 @@ function updateUsersOnline() {
 
 updateUsersOnline();
 setInterval(updateUsersOnline, 5000);
-
