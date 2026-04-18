@@ -1,33 +1,20 @@
 /* ============================================================
-   VYPER DEV TOOLS — SAFE DEVELOPMENT FEATURES
-   These tools are for testing UI behavior, themes, and window
-   handling in your own project. Nothing here is for evasion.
+   VYPER DEV TOOLS — CLEAN + GLOBAL + PERSISTENT
    ============================================================ */
 
-/* ============================================================
-   CONFIG — TURN FEATURES ON/OFF
-   ============================================================ */
-const DEV_FEATURES = {
-    hotkeyCloak: true,          // Press F to open Vyper in about:blank
-    autoCloakOnBlur: true,      // Auto-open Vyper when tab loses focus
-    fakeTabTitle: true,         // Change tab title for UI testing
-    schoologyTheme: false,      // Enable Schoology-style theme
-    hotkeyCloseAll: true        // Press X to close all cloak windows
-};
+const SCHOOLOGY_KEY = "vyper-schoology-enabled";
+const THEME_KEY = "vyper-theme-name";
 
-/* ============================================================
-   INTERNAL — TRACK OPENED WINDOWS
-   ============================================================ */
 let vyperWindows = [];
 
 /* ============================================================
-   1. FUNCTION — OPEN VYPER IN ABOUT:BLANK
+   OPEN VYPER IN ABOUT:BLANK
    ============================================================ */
-function openVyperCloak() {
+function openBlankCloak() {
     const win = window.open("about:blank", "_blank");
 
     if (win) {
-        vyperWindows.push(win); // Track window so we can close it later
+        vyperWindows.push(win);
 
         win.document.write(`
             <iframe src="index.html" style="
@@ -45,56 +32,81 @@ function openVyperCloak() {
         `);
 
         win.document.close();
-    } else {
-        console.warn("Popup blocked — allow popups for dev testing.");
     }
 }
 
 /* ============================================================
-   2. HOTKEY CLOAK — PRESS F TO OPEN ABOUT:BLANK
+   HOTKEY: PRESS F TO OPEN CLOAK
    ============================================================ */
-if (DEV_FEATURES.hotkeyCloak) {
-    document.addEventListener("keydown", (e) => {
-        if (e.key.toLowerCase() === "f") {
-            openVyperCloak();
-        }
-    });
+document.addEventListener("keydown", (e) => {
+    if (e.key.toLowerCase() === "f") openBlankCloak();
+});
+
+/* ============================================================
+   HOTKEY: PRESS X TO CLOSE ALL CLOAK WINDOWS
+   ============================================================ */
+document.addEventListener("keydown", (e) => {
+    if (e.key.toLowerCase() === "x") {
+        vyperWindows.forEach(win => { try { win.close(); } catch {} });
+        vyperWindows = [];
+    }
+});
+
+/* ============================================================
+   AUTO-CLOAK ON TAB BLUR
+   ============================================================ */
+window.addEventListener("blur", () => {
+    if (localStorage.getItem("auto-cloak") === "true") {
+        openBlankCloak();
+    }
+});
+
+function toggleAutoCloak() {
+    const enabled = localStorage.getItem("auto-cloak") === "true";
+    localStorage.setItem("auto-cloak", enabled ? "false" : "true");
 }
 
 /* ============================================================
-   3. HOTKEY CLOSE ALL — PRESS X TO CLOSE ALL OPENED WINDOWS
+   FAKE TAB TITLE
    ============================================================ */
-if (DEV_FEATURES.hotkeyCloseAll) {
-    document.addEventListener("keydown", (e) => {
-        if (e.key.toLowerCase() === "x") {
-            vyperWindows.forEach(win => {
-                try { win.close(); } catch {}
-            });
-            vyperWindows = [];
-        }
-    });
+function toggleFakeTitle() {
+    const enabled = localStorage.getItem("fake-title") === "true";
+    const now = !enabled;
+
+    localStorage.setItem("fake-title", now ? "true" : "false");
+
+    document.title = now ? "Schoology | Home" : "Vyper";
 }
 
-/* ============================================================
-   4. AUTO-CLOAK WHEN TAB LOSES FOCUS
-   ============================================================ */
-if (DEV_FEATURES.autoCloakOnBlur) {
-    window.addEventListener("blur", () => {
-        openVyperCloak();
-    });
-}
-
-/* ============================================================
-   5. FAKE TAB TITLE (UI TESTING ONLY)
-   ============================================================ */
-if (DEV_FEATURES.fakeTabTitle) {
+if (localStorage.getItem("fake-title") === "true") {
     document.title = "Schoology | Home";
 }
 
 /* ============================================================
-   6. SCHOOLGY-STYLE THEME (VISUAL ONLY)
+   SCHOOLOGY THEME (GLOBAL + PERSISTENT)
    ============================================================ */
-if (DEV_FEATURES.schoologyTheme) {
+function toggleSchoology() {
+    const enabled = localStorage.getItem(SCHOOLOGY_KEY) === "true";
+    const now = !enabled;
+
+    localStorage.setItem(SCHOOLOGY_KEY, now ? "true" : "false");
+
+    if (now) {
+        document.documentElement.style.setProperty("--accent", "#1976d2");
+        document.documentElement.style.setProperty("--bg", "#f5f7fa");
+        document.documentElement.style.setProperty("--text", "#1a1a1a");
+    } else {
+        const savedName = localStorage.getItem(THEME_KEY) || "neon";
+        const theme = VYPER_THEMES[savedName];
+
+        document.documentElement.style.setProperty("--accent", theme.accent);
+        document.documentElement.style.setProperty("--bg", theme.bg);
+        document.documentElement.style.setProperty("--text", theme.text);
+    }
+}
+
+/* APPLY SCHOOLOGY OVERRIDE ON PAGE LOAD */
+if (localStorage.getItem(SCHOOLOGY_KEY) === "true") {
     document.documentElement.style.setProperty("--accent", "#1976d2");
     document.documentElement.style.setProperty("--bg", "#f5f7fa");
     document.documentElement.style.setProperty("--text", "#1a1a1a");
