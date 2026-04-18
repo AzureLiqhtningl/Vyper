@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Vyper | Settings</title>
 
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- GLOBAL THEME + MENU LOGIC -->
     <script src="settings.js" defer></script>
-    <script src="index.js" defer></script>
+
+    <!-- CLOAK FUNCTIONS -->
     <script src="cloak-dev.js" defer></script>
+
+    <!-- INFO PANEL -->
+    <script src="info-panel.js" defer></script>
 </head>
 
 <body>
@@ -19,34 +25,83 @@
         <button onclick="location.href='settings.html'" class="nav-btn active">Settings</button>
     </div>
 
-    <!-- SETTINGS PAGE -->
+    <!-- SETTINGS LAYOUT -->
     <div class="settings-container">
 
+        <!-- LEFT MENU -->
         <div class="settings-menu">
-            <div class="settings-item" data-target="themes">Themes</div>
-            <div class="settings-item" data-target="about">About</div>
+            <div class="settings-item active" data-section="credits">💾 Credits</div>
+            <div class="settings-item" data-section="themes">🎨 Themes</div>
+            <div class="settings-item" data-section="cloaks">🕶️ Cloaks</div>
+            <div class="settings-item" data-section="about">ℹ️ About</div>
+            <div class="settings-item" data-section="partners">🤝 Partners</div>
         </div>
 
+        <!-- RIGHT CONTENT -->
         <div class="settings-content">
 
+            <!-- CREDITS -->
+            <div id="credits" class="content-section active">
+                <h2>Credits</h2>
+
+                <h3>Owners</h3>
+                <p>wxrmhole<br>AzureLiqhtning</p>
+
+                <h3>Developers</h3>
+                <p>King</p>
+
+                <h3>Games</h3>
+                <p>LuminSDK</p>
+            </div>
+
             <!-- THEMES -->
-            <div id="themes" class="content-section active">
-                <h2>Themes</h2>
+            <div id="themes" class="content-section">
+                <h2>Theme Options</h2>
 
                 <button class="theme-option" data-theme="neon">Neon Green</button>
-                <button class="theme-option" data-theme="blue">Blue</button>
                 <button class="theme-option" data-theme="red">Red</button>
-                <button class="theme-option" data-theme="gray">Black/Gray</button>
+                <button class="theme-option" data-theme="blue">Blue</button>
+                <button class="theme-option" data-theme="gray">Black / Gray</button>
+            </div>
+
+            <!-- CLOAKS -->
+            <div id="cloaks" class="content-section">
+                <h2>Cloaking Tools</h2>
+
+                <p>Instantly hide Vyper using any of the cloaking methods below.</p>
+
+                <button class="theme-option" onclick="openBlankCloak()">Open in about:blank</button>
+                <button class="theme-option" onclick="toggleFakeTitle()">Toggle Fake Tab Title</button>
+                <button class="theme-option" onclick="toggleAutoCloak()">Toggle Auto‑Cloak</button>
+                <button class="theme-option" onclick="toggleSchoology()">Toggle Fake Schoology</button>
             </div>
 
             <!-- ABOUT -->
             <div id="about" class="content-section">
                 <h2>About Vyper</h2>
-                <p>A clean, neon‑styled web experience.</p>
+                <p>Vyper is a modern neon‑styled proxy platform built for speed, privacy, and customization.</p>
+            </div>
+
+            <!-- PARTNERS (NEW TAB) -->
+            <div id="partners" class="content-section">
+                <h2>Partners</h2>
+
+                <h3>prxy info</h3>
+                <p>King</p>
+
+                <h3>Eben Lee</h3>
+                <p>Partner & Supporter</p>
             </div>
 
         </div>
+    </div>
 
+    <!-- RIGHT INFO PANEL -->
+    <div id="info-panel">
+        <div id="info-content">
+            <h3>Vyper Info</h3>
+            <p id="online-count">Users Online: ...</p>
+        </div>
     </div>
 
 </body>
