@@ -7,15 +7,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap");
 
 /* --------------------------------------------------
-   GLOBAL BODY (Pixelify Sans)
+   GLOBAL STYLES
 -------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: "Pixelify Sans", Arial, Helvetica, sans-serif;
-    margin: 0;
-    background: #111;
+    background: #0a0e27;
     color: #C4C4C4;
     display: flex;
-    flex-direction: column;
     min-height: 100vh;
     opacity: 0;
     animation: fadeInPage 1.2s ease forwards;
@@ -26,10 +30,10 @@ body {
 }
 
 /* --------------------------------------------------
-   TITLES (Space Mono + pulsing neon)
+   TYPOGRAPHY
 -------------------------------------------------- */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Space Mono", monospace;
+    font-family: "Exo 2", sans-serif;
     color: #58F00C;
     text-shadow:
         0 0 8px #58F00C,
@@ -44,70 +48,274 @@ h1, h2, h3, h4, h5, h6 {
     100% { text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C, 0 0 18px #58F00C; }
 }
 
+p {
+    font-family: "Pixelify Sans", Arial, Helvetica, sans-serif;
+}
+
 /* --------------------------------------------------
-   LOGO TITLE (Exo 2 — STATIC, NO TYPING)
+   SIDEBAR NAVIGATION (TOP HORIZONTAL)
 -------------------------------------------------- */
-.logo-wrapper h1 {
-    font-family: "Exo 2", sans-serif !important;
-    color: #58F00C;
-    text-shadow:
-        0 0 6px #58F00C,
-        0 0 12px #58F00C;
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(90deg, #0f1527 0%, #1a1f3a 100%);
+    border-bottom: 1px solid rgba(88, 240, 12, 0.2);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: none;
+    border-right: 1px solid rgba(88, 240, 12, 0.2);
+    padding: 0 30px 0 0;
+    margin-bottom: 0;
     white-space: nowrap;
-    border: none;
-    width: auto;
+    flex-shrink: 0;
 }
 
-/* --------------------------------------------------
-   UI ELEMENTS (Atomic Age)
--------------------------------------------------- */
-#sj-address,
-footer a,
-footer span,
-#sj-error,
-#sj-error-code,
-.credit label,
-.credit a {
-    font-family: "Atomic Age", cursive;
-    color: #C4C4C4;
-}
-
-a:hover,
-button:hover,
-#sj-address:hover {
-    color: #58F00C;
-    text-shadow:
-        0 0 6px #58F00C,
-        0 0 12px #58F00C;
-}
-
-/* --------------------------------------------------
-   SEARCH BAR (glowing caret + neon focus)
--------------------------------------------------- */
-#sj-address {
-    background: none;
-    padding: 0px 17px;
+.sidebar-logo {
+    width: 48px;
     height: 48px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #C4C4C4;
-    border-radius: 50px;
-    outline: none;
-    width: 350px;
-    margin-top: 5px;
-    caret-color: #58F00C;
-    transition:
-        border-radius 0.1s,
-        box-shadow 0.3s ease;
+    border-radius: 10px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(88, 240, 12, 0.4));
+    transition: all 0.3s ease;
 }
 
-#sj-address:focus {
-    border: 1px solid #58F00C;
-    box-shadow: 0 0 12px #58F00C;
+.sidebar-logo:hover {
+    filter: drop-shadow(0 0 20px rgba(88, 240, 12, 0.6));
+    transform: scale(1.05);
+}
+
+.sidebar-header h2 {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58F00C, #7dff33);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 8px;
+    flex: 1;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    color: #C4C4C4;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    position: relative;
+    white-space: nowrap;
     border-radius: 6px;
 }
 
+.nav-link:hover {
+    color: #58F00C;
+    background: rgba(88, 240, 12, 0.1);
+    border-bottom-color: #58F00C;
+    text-shadow: 0 0 8px rgba(88, 240, 12, 0.4);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    color: #58F00C;
+    background: rgba(88, 240, 12, 0.15);
+    border-bottom-color: #58F00C;
+    box-shadow: 0 0 12px rgba(88, 240, 12, 0.3);
+}
+
+.nav-link svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2;
+}
+
 /* --------------------------------------------------
-   NEON SPINNER (CENTER SCREEN)
+   MAIN CONTAINER & LAYOUT
+-------------------------------------------------- */
+.main-container {
+    margin-top: 90px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 90px);
+    background: #0a0e27;
+}
+
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------
+   HERO SECTION
+-------------------------------------------------- */
+.hero-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hero-title {
+    font-size: 56px;
+    margin: 0 0 16px 0;
+    background: linear-gradient(135deg, #58F00C, #7dff33);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    color: #999;
+    margin: 0;
+    font-family: "Pixelify Sans", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+
+/* --------------------------------------------------
+   SEARCH FORM & INPUT
+-------------------------------------------------- */
+.search-form {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.search-input {
+    flex: 1;
+    padding: 16px 24px;
+    background: rgba(88, 240, 12, 0.03);
+    border: 2px solid rgba(88, 240, 12, 0.3);
+    border-radius: 12px;
+    color: #C4C4C4;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 16px;
+    outline: none;
+    caret-color: #58F00C;
+    transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+    color: #666;
+}
+
+.search-input:focus {
+    background: rgba(88, 240, 12, 0.08);
+    border-color: #58F00C;
+    box-shadow: 0 0 20px rgba(88, 240, 12, 0.3);
+    transform: translateY(-2px);
+}
+
+.search-btn {
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #58F00C, #42bd18);
+    border: none;
+    border-radius: 12px;
+    color: #0a0e27;
+    font-weight: 700;
+    font-family: "Space Mono", monospace;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(88, 240, 12, 0.3);
+    white-space: nowrap;
+}
+
+.search-btn:hover {
+    box-shadow: 0 8px 30px rgba(88, 240, 12, 0.5);
+    transform: translateY(-4px);
+    background: linear-gradient(135deg, #7dff33, #58F00C);
+}
+
+/* --------------------------------------------------
+   INFO BOX
+-------------------------------------------------- */
+.info-box {
+    background: rgba(88, 240, 12, 0.05);
+    border: 1px solid rgba(88, 240, 12, 0.3);
+    border-radius: 12px;
+    padding: 28px 32px;
+    max-width: 600px;
+    text-align: center;
+    color: #C4C4C4;
+    font-family: "Pixelify Sans", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    backdrop-filter: blur(5px);
+}
+
+/* --------------------------------------------------
+   ERROR CONTAINER
+-------------------------------------------------- */
+.error-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+#sj-error {
+    color: #ff6666 !important;
+    white-space: pre-wrap;
+    font-family: "Space Mono", monospace;
+}
+
+#sj-error-code {
+    font-size: 12px;
+    color: #C4C4C4;
+    font-family: "Space Mono", monospace;
+}
+
+/* --------------------------------------------------
+   IFRAME STYLES
+-------------------------------------------------- */
+#sj-frame {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #111;
+}
+
+/* --------------------------------------------------
+   NEON SPINNER
 -------------------------------------------------- */
 #neon-spinner {
     position: fixed;
@@ -137,24 +345,24 @@ button:hover,
 }
 
 /* --------------------------------------------------
-   LAYOUT + EXISTING STYLES
+   UTILITY CLASSES
+-------------------------------------------------- */
+a {
+    color: #58F00C;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    text-shadow: 0 0 8px #58F00C;
+}
+
+/* --------------------------------------------------
+   LEGACY STYLES (keeping for compatibility)
 -------------------------------------------------- */
 .flex-center { display: flex; justify-content: center; }
 .header-center { align-items: center; flex-direction: column; margin-top: 10%; }
 .left-margin { margin: 0px 16px; }
-
-#sj-frame {
-    border: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #111;
-}
-
-#sj-error { color: #ff6666 !important; white-space: pre-wrap; }
-#sj-error-code { font-size: 12px; color: #C4C4C4; }
 
 .logo { height: 25vh; }
 
@@ -229,4 +437,93 @@ footer a:hover {
 
 .credit input:checked ~ pre {
     display: block;
+}
+
+/* --------------------------------------------------
+   RESPONSIVE DESIGN
+-------------------------------------------------- */
+@media (max-width: 768px) {
+    .sidebar {
+        gap: 20px;
+        padding: 12px 15px;
+    }
+
+    .sidebar-header {
+        padding: 0 15px 0 0;
+    }
+
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .main-container {
+        margin-top: 80px;
+        min-height: calc(100vh - 80px);
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+        height: auto;
+    }
+
+    .sidebar-header {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(88, 240, 12, 0.3);
+        padding: 0 0 10px 0;
+        margin-bottom: 10px;
+    }
+
+    .sidebar-logo {
+        width: 32px;
+        height: 32px;
+    }
+
+    .sidebar-header h2 {
+        font-size: 16px;
+    }
+
+    .nav-links {
+        width: 100%;
+        gap: 5px;
+    }
+
+    .nav-link {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .main-container {
+        margin-top: auto;
+        min-height: auto;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .content-wrapper {
+        padding: 20px 10px;
+    }
 }

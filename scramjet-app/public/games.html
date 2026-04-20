@@ -3,16 +3,73 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Game Page</title>
+  <title>Vyper Games</title>
+  <link rel="shortcut icon" href="logo.png" />
+  <link rel="stylesheet" href="index.css" />
   <style>
     body {
       margin: 0;
-      background: #0a0a0a;
+      background: #0a0e27;
+    }
+    
+    .games-container {
+      margin-top: 80px;
+      width: 100%;
+      padding: 20px;
+      min-height: calc(100vh - 80px);
+    }
+    
+    .games-header {
+      margin-bottom: 30px;
+    }
+    
+    .games-header h1 {
+      font-size: 36px;
+      margin: 0 0 10px 0;
+    }
+    
+    #games {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .games-container {
+        margin-top: 80px;
+        min-height: calc(100vh - 80px);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .games-container {
+        margin-top: auto;
+        padding: 15px;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="games"></div>
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <img class="sidebar-logo" src="logo.png" alt="Vyper" />
+      <h2>Vyper</h2>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">🌐 Home</a></li>
+      <li><a href="games.html" class="nav-link active">🎮 Games</a></li>
+      <li><a href="movies.html" class="nav-link">🎬 Movies</a></li>
+    </ul>
+  </nav>
+
+  <div class="games-container">
+    <div class="games-header">
+      <h1>Games</h1>
+      <p>Play your favorite games</p>
+    </div>
+    <div id="games"></div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js"></script>
   <script>
