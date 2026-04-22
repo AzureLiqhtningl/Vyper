@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Doge Unblocker - Access Blocked Sites Without Restriction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Doge Unblocker helps you bypass filters and access blocked content while maintaining your privacy and security." />
+    <link
+      rel="canonical"
+      href="https://dogeunblocker.net"
+    />
+    <meta property="og:title" content="Doge Unblocker - Access Blocked Sites Without Restriction" />
+    <meta property="og:description" content="Doge Unblocker helps you bypass filters and access blocked content while maintaining your privacy and security." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://dogeunblocker.net/dogeunblocker.png" />
+    <meta
+      property="og:url"
+      content="https://dogeunblocker.net"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script defer data-domain="dogeunblocker.net" src="https://plausible.io/js/script.js"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .pixel-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+          ),
+          radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+        background-position: 0 0, 25px 25px;
+        animation: pixelMove 20s linear infinite;
+      }
+
+      @keyframes pixelMove {
+        0% {
+          background-position: 0 0, 25px 25px;
+        }
+        100% {
+          background-position: 50px 50px, 75px 75px;
+        }
+      }
+
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .spin-slow {
+        animation: spin 8s linear infinite;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      [x-cloak] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-gray-100 min-h-screen relative overflow-x-hidden">
+    <!-- Navigation -->
+<nav x-data="{ isOpen: false }" class="bg-gray-800/50 backdrop-blur-sm fixed w-full z-50 transition-all duration-300" :class="{ 'shadow-lg': window.pageYOffset > 0 }">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between h-16">
+      <div class="flex items-center space-x-2">
+        <svg class="h-12 w-12 text-cyan-400 transition duration-500 ease-in-out transform group-hover:scale-110" width="621" height="621" viewBox="0 0 621 621" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M310.5 5.83057C229.701 5.83057 152.212 37.9278 95.0782 95.0611C37.9449 152.195 5.84766 229.684 5.84766 310.483C5.84766 391.282 37.9449 468.771 95.0782 525.905C152.212 583.038 229.701 615.135 310.5 615.135C391.294 615.135 468.779 583.04 525.909 525.91C583.04 468.779 615.135 391.294 615.135 310.5C615.135 229.706 583.04 152.221 525.909 95.0906C468.779 37.9604 391.294 5.86507 310.5 5.86507" fill="url(#paint0_linear_38_38)"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M310.5 609.339C389.757 609.339 465.768 577.854 521.811 521.811C577.854 465.768 609.339 389.757 609.339 310.5C609.339 231.243 577.854 155.232 521.811 99.1889C465.768 43.1457 389.757 11.661 310.5 11.661C231.243 11.661 155.232 43.1457 99.1889 99.1889C43.1457 155.232 11.661 231.243 11.661 310.5C11.661 389.757 43.1457 465.768 99.1889 521.811C155.232 577.854 231.243 609.339 310.5 609.339ZM621 310.5C621 351.275 612.969 391.652 597.365 429.323C581.761 466.995 558.889 501.224 530.057 530.057C501.224 558.889 466.995 581.761 429.323 597.365C391.652 612.969 351.275 621 310.5 621C269.725 621 229.348 612.969 191.677 597.365C154.005 581.761 119.776 558.889 90.9433 530.057C62.1107 501.224 39.2395 466.995 23.6354 429.323C8.03132 391.652 -6.07601e-07 351.275 0 310.5C1.22711e-06 228.15 32.7133 149.173 90.9433 90.9433C149.173 32.7133 228.15 0 310.5 0C392.85 0 471.827 32.7133 530.057 90.9433C588.287 149.173 621 228.15 621 310.5Z" fill="black"/>
+          <path d="M346.553 118.439L342.068 123.269C327.847 120.321 313.363 118.83 298.839 118.818C288.535 118.818 278.461 119.658 268.617 121.337C253.851 116.921 242.19 112.712 228.045 97.8421L224.492 94.0471C217.212 86.2846 207.725 76.1761 198.03 69.4486C192.269 65.4811 185.783 62.2036 179.021 61.5826C175.328 61.2319 171.604 61.7621 168.156 63.1294C164.708 64.4968 161.633 66.6624 159.183 69.4486C148.971 80.2816 139.967 101.775 134.688 129.341C129.444 156.837 127.788 191.234 132.825 229.287C123.855 250.677 118.922 274.137 118.922 298.736C118.922 335.478 129.962 369.668 148.868 398.165C164.582 431.795 190.314 459.742 222.536 478.174C254.757 496.605 291.892 504.619 328.847 501.116C365.802 497.614 400.769 482.766 428.954 458.608C457.139 434.451 477.162 402.167 486.278 366.183C497.411 346.249 503.287 323.81 503.355 300.978C503.355 253.61 477.998 211.451 438.495 182.781C427.11 160.908 426.593 145.59 426.075 128.858L425.661 119.301C425.489 115.989 425.42 113.091 425.316 110.262L425.109 104.052C424.989 99.6403 424.446 95.2502 423.488 90.9421C422.53 86.6294 420.148 82.7647 416.726 79.9711C412.715 77.1628 407.885 75.7672 402.995 76.0036C399.54 76.181 396.163 77.0987 393.093 78.6946C389.667 80.4087 386.39 82.405 383.295 84.6631C376.236 89.9109 369.517 95.6035 363.182 101.706C356.765 107.813 350.831 113.885 346.553 118.439Z" fill="url(#paint1_linear_38_38)" stroke="black"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M131.859 346.311C136.862 363.837 144.521 380.259 154.422 395.06C169.557 427.63 194.418 454.706 225.582 472.558C256.746 490.41 292.678 498.16 328.43 494.739C364.181 491.318 397.993 476.896 425.206 453.458C452.419 430.02 471.695 398.721 480.378 363.872C491.108 344.724 497.076 323.438 497.076 301.013C497.076 278.588 491.108 257.198 480.344 238.05C473.685 235.808 467.924 235.808 463.404 238.326C456.401 242.225 453.054 251.712 453.054 265.271C453.02 273.896 444.153 280.658 435.942 278.174C411.999 270.929 388.781 271.895 369.357 282.659C364.497 285.348 359.979 288.615 355.902 292.388C337.272 309.431 295.148 320.436 275.517 304.532C237.671 273.792 197.064 262.442 167.601 278.829C146.177 290.766 134.24 315.296 131.859 346.311Z" fill="white"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M300.357 456.401C245.399 461.472 190.302 421.59 151.731 388.919C165.798 422.539 190.086 450.881 221.155 469.93C252.225 488.98 288.5 497.77 324.843 495.057C361.186 492.343 395.754 478.263 423.651 454.812C451.547 431.36 471.357 399.725 480.275 364.389L476.687 372.531C475.827 374.463 474.55 376.181 472.949 377.562C471.348 378.943 469.461 379.953 467.424 380.52C465.387 381.087 463.25 381.197 461.165 380.841C459.081 380.486 457.1 379.675 455.366 378.465C454.2 384.473 451.817 390.18 448.362 395.232C442.62 402.711 435.233 408.767 426.773 412.931C418.314 417.095 409.009 419.256 399.579 419.244C389.801 419.296 380.143 417.088 371.358 412.793C373.325 419.348 355.316 451.329 300.357 456.401Z" fill="#F7ECDF"/>
+          <path d="M174.294 185.886C164.358 153.352 166.877 113.54 174.294 90.5625C182.524 117.089 197.827 140.872 218.558 159.355C205.482 162.184 186.818 173.19 174.294 185.886ZM377.603 300.84C387.435 279.899 445.188 276.173 454.296 300.84C459.333 314.64 438.944 345.862 425.351 347.898C405.824 350.796 366.77 323.99 377.603 300.84Z" fill="black"/>
+          <path opacity="0.5" d="M319.366 200.307C311.535 206.413 282.348 206.931 279.415 197.995C276.483 189.094 295.32 169.878 309.016 175.95C320.47 181.021 329.509 192.441 319.366 200.307ZM410.653 188.508C405.202 196.684 390.574 195.753 384.778 188.508C378.982 181.263 379.845 167.463 395.025 168.601C407.686 169.533 414.345 183.022 410.653 188.508Z" fill="white"/>
+          <path d="M368.253 418.451C364.976 415.553 369.081 411.827 373.049 413.621C380.949 417.243 389.954 419.279 399.51 419.279C424.074 419.279 444.981 405.824 452.744 386.987C453.434 385.262 455.987 385.469 455.987 387.297C455.987 411.896 433.079 431.802 404.823 431.802C390.506 431.802 377.568 426.696 368.253 418.451Z" fill="black"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M522.158 188.784L163.013 231.288L165.048 248.538L219.627 242.052L221.697 259.302L238.913 257.232L240.948 274.482L258.198 272.481L260.234 289.731L317.711 282.9L315.641 265.65L332.891 263.615L330.855 246.365L348.105 244.329L346.035 227.079L524.193 206.034L522.158 188.784ZM380.535 223.043L506.978 208.07L509.013 225.32L382.571 240.258L380.535 223.043ZM491.763 227.355L399.821 238.223L401.856 255.473L419.106 253.403L421.142 270.653L478.619 263.856L476.549 246.606L493.799 244.605L491.763 227.355Z" fill="black"/>
+          <path d="M472.443 212.175L489.693 210.105L491.729 227.355L474.479 229.39L472.443 212.175Z" fill="white"/>
+          <path d="M457.298 231.391L474.548 229.356L476.583 246.606L459.333 248.676L457.298 231.391ZM311.535 231.15L328.785 229.114L330.855 246.364L313.605 248.4L311.535 231.15ZM296.355 250.47L313.605 248.4L315.675 265.65L298.425 267.685L296.355 250.47Z" fill="white"/>
+          <path d="M468.786 313.226C483.034 331.994 467.44 366.011 440.392 365.528C437.433 365.428 434.485 365.944 431.736 367.042C428.986 368.141 426.495 369.799 424.419 371.91C403.063 394.611 358.041 397.44 344.103 366.045C342.775 362.839 340.388 360.184 337.341 358.524L326.301 353.004" stroke="black" stroke-linecap="round"/>
+          <path d="M394.335 391.196C429.145 405.168 449.638 378.258 447.844 368.184L423.694 370.944L394.335 391.196Z" fill="black"/>
+          <defs>
+          <linearGradient id="paint0_linear_38_38" x1="310.534" y1="621" x2="310.534" y2="8.17602e-05" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#7774F4"/>
+          <stop offset="0.715" stop-color="#9157F9"/>
+          <stop offset="1" stop-color="#B133FF"/>
+          </linearGradient>
+          <linearGradient id="paint1_linear_38_38" x1="311.121" y1="67.7926" x2="311.121" y2="495.489" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#FBF476"/>
+          <stop offset="0.45" stop-color="#FFA725"/>
+          <stop offset="1" stop-color="#FFA725"/>
+          </linearGradient>
+          </defs>
+          </svg>          
+        <a href="/" class="group text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 transition duration-500 ease-in-out transform hover:scale-105">Doge Unblocker</a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="px-4 py-2 rounded-lg text-gray-300 hover:text-purple-400 hover:bg-gray-700/50 transition-all duration-200 flex items-center space-x-2" :class="{ 'bg-gray-700/50 text-purple-400': window.location.pathname === '/' }">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span>Home</span>
+        </a>
+        <a href="/about" class="px-4 py-2 rounded-lg text-gray-300 hover:text-purple-400 hover:bg-gray-700/50 transition-all duration-200 flex items-center space-x-2" :class="{ 'bg-gray-700/50 text-purple-400': window.location.pathname === '/about' }">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>About</span>
+        </a>
+        <a href="/contact" class="px-4 py-2 rounded-lg text-gray-300 hover:text-purple-400 hover:bg-gray-700/50 transition-all duration-200 flex items-center space-x-2" :class="{ 'bg-gray-700/50 text-purple-400': window.location.pathname === '/contact' }">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>Contact</span>
+        </a>
+        <a href="/faqs" class="px-4 py-2 rounded-lg text-gray-300 hover:text-purple-400 hover:bg-gray-700/50 transition-all duration-200 flex items-center space-x-2" :class="{ 'bg-gray-700/50 text-purple-400': window.location.pathname === '/faqs' }">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>FAQs</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button @click="isOpen = !isOpen" class="text-gray-300 hover:text-purple-400 p-2 rounded-lg hover:bg-gray-700/50 transition-all duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path x-show="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <path x-show="isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div x-show="isOpen" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="md:hidden bg-gray-800/50 backdrop-blur-sm rounded-lg mt-2 p-4">
+      <div class="flex flex-col space-y-2">
+        <a href="/" class="p-3 rounded-lg text-gray-300 hover:text-purple-400 hover:bg-gray-700/50 transition-all duration-200 flex items-center space-x-2" :class="{ 'bg-gray-700/50 text-purple-400': window.location.pathname === '/' }">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span>Home</span>
+        </a>
+        <a href="/about" class="p-3 rounded-lg text-gray-300 hover:text-purple-400 hover:bg-gray-700/50 transition-all duration-200 flex items-center space-x-2" :class="{ 'bg-gray-700/50 text-purple-400': window.location.pathname === '/about' }">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>About</span>
+        </a>
+        <a href="/contact" class="p-3 rounded-lg text-gray-300 hover:text-purple-400 hover:bg-gray-700/50 transition-all duration-200 flex items-center space-x-2" :class="{ 'bg-gray-700/50 text-purple-400': window.location.pathname === '/contact' }">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>Contact</span>
+        </a>
+        <a href="/faqs" class="p-3 rounded-lg text-gray-300 hover:text-purple-400 hover:bg-gray-700/50 transition-all duration-200 flex items-center space-x-2" :class="{ 'bg-gray-700/50 text-purple-400': window.location.pathname === '/faqs' }">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>FAQs</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav> 
+
+<div id="particles-js" class="h-[50vh]"></div>
+<div class="content relative">
+  <div class="pixel-bg"></div>
+
+  <div class="relative">
+    <!-- Hero Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-32">
+      <div class="text-center">
+        <h1 class="text-3xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 mb-6 animate-gradient bg-[length:200%_auto]">
+          Access Blocked Sites<br/>Without Restriction
+        </h1>
+        <p class="text-base lg:text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
+          Doge Unblocker helps you bypass filters and access blocked content while maintaining your privacy and security.
+        </p>
+
+        <form action="no-js" method="get" id="unblocker-form" class="max-w-2xl mx-auto mb-6 px-4"
+          x-data="{
+            placeholders: ['https://www.roblox.com', 'https://www.twitch.tv/', 'https://www.google.com/'],
+            currentPlaceholder: '',
+            currentIndex: 0,
+            charIndex: 0,
+            isDeleting: false,
+            init() {
+              this.type();
+            },
+            type() {
+              const current = this.placeholders[this.currentIndex];
+              
+              if (this.isDeleting) {
+                this.currentPlaceholder = current.substring(0, this.charIndex - 1);
+                this.charIndex--;
+              } else {
+                this.currentPlaceholder = current.substring(0, this.charIndex + 1);
+                this.charIndex++;
+              }
+
+              if (!this.isDeleting && this.charIndex === current.length) {
+                setTimeout(() => this.isDeleting = true, 800);
+              } else if (this.isDeleting && this.charIndex === 0) {
+                this.isDeleting = false;
+                this.currentIndex = (this.currentIndex + 1) % this.placeholders.length;
+              }
+
+              const typingSpeed = this.isDeleting ? 25 : 50;
+              setTimeout(() => this.type(), typingSpeed);
+            }
+          }">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <input type="text" id="url" name="url" autofocus="autofocus" required
+              class="flex-1 bg-gray-800/50 backdrop-blur-sm text-white rounded-lg px-4 sm:px-6 py-3 sm:py-4 focus:outline-none focus:ring-2 focus:ring-purple-500 text-base sm:text-lg w-full border border-gray-700/50"
+              :placeholder="currentPlaceholder"/>
+            <button type="submit" 
+              class="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium rounded-lg hover:opacity-90 transition-all text-base sm:text-lg w-full sm:w-auto flex items-center justify-center gap-2">
+              <span>Access</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+          </div>
+        </form>
+        
+        <div class="flex items-center justify-center gap-2 mb-12" x-data="{ checked: false }">
+          <input type="checkbox" id="terms-checkbox" 
+            x-model="checked"
+            class="w-4 h-4 rounded border-gray-600 bg-gray-800/50 text-purple-400 focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-gray-900 cursor-pointer">
+          <p class="text-xs text-gray-400 cursor-pointer" @click="checked = !checked">
+            By accessing, you agree with our <a href="/terms" class="text-purple-400 hover:underline">Terms of Service</a> and <a href="/privacy" class="text-purple-400 hover:underline">Privacy Policy</a>.
+          </p>
+        </div>
+
+        <!-- Popular Services -->
+        <div class="mb-16">
+          <h2 class="text-2xl font-semibold text-purple-400 mb-4">POPULAR SERVICES YOU CAN ACCESS</h2>
+          <p class="text-gray-400">Doge Unblocker can bypass geo-blocking tools of premium services, and here are some:</p>
+          <hr class="border-gray-700 my-4 max-w-4xl mx-auto">
+          <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="text-center mx-auto w-full h-12 w-12 text-[#00A2FF]" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m13.936 15.356l-12.11-3.244L0 18.93L18.928 24l2.68-9.99l-6.818-1.83zM5.072 0L2.394 9.992l6.816 1.83l.854-3.178l12.11 3.246L24 5.072z"/></svg>
+              <h3 class="text-xl font-bold mb-2">Roblox</h3>
+              <p class="text-gray-400">Play Roblox anywhere, even at school</p>
+            </div>
+            <div class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="text-center mx-auto w-full h-12 w-12 text-[#FF0000]" width="24" height="24" viewBox="0 0 24 24" class="mb-3 text-cyan-400"><path fill="currentColor" d="M23.498 6.186a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.02 3.02 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.02 3.02 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.02 3.02 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z"/></svg>
+              <h3 class="text-xl font-bold mb-2">YouTube</h3>
+              <p class="text-gray-400">Bypass geo-restrictions and blocks</p>
+            </div>
+            <div class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="text-center mx-auto w-full h-12 w-12 text-[#9146FF]" width="24" height="24" viewBox="0 0 24 24" class="mb-3 text-cyan-400"><path fill="currentColor" d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg>
+              <h3 class="text-xl font-bold mb-2">Twitch</h3>
+              <p class="text-gray-400">Access premium streaming content</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features -->
+        <div class="grid md:grid-cols-4 gap-8 mb-16 max-w-5xl mx-auto">
+          <div class="text-center">
+            <div class="mb-4">
+              <svg class="w-12 h-12 mx-auto spin-slow" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2V6M12 18V22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12H6M18 12H22M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93" stroke="#22D3EE" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="text-xl font-bold text-purple-400 mb-2">Quick Access</div>
+            <p class="text-gray-400">Access any site from anywhere</p>
+          </div>
+          <div class="text-center">
+            <div class="mb-4">
+              <svg class="w-12 h-12 mx-auto float-animation" viewBox="0 0 24 24" fill="none">
+                <path d="M12 15V17M6 21H18C19.1046 21 20 20.1046 20 19V9C20 7.89543 19.1046 7 18 7H6C4.89543 7 4 7.89543 4 9V19C4 20.1046 4.89543 21 6 21ZM16 7V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V7H16Z" stroke="#22D3EE" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="text-xl font-bold text-purple-400 mb-2">Easy to Use</div>
+            <p class="text-gray-400">Simple and intuitive interface</p>
+          </div>
+          <div class="text-center">
+            <div class="mb-4">
+              <svg class="w-12 h-12 mx-auto float-animation" viewBox="0 0 24 24" fill="none">
+                <path d="M3 15C3 12.7909 4.79086 11 7 11H17C19.2091 11 21 12.7909 21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15Z" stroke="#22D3EE" stroke-width="2"/>
+                <path d="M12 3L17 7.5L12 12L7 7.5L12 3Z" stroke="#22D3EE" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="text-xl font-bold text-purple-400 mb-2">Free to Use</div>
+            <p class="text-gray-400">No cost, no subscriptions</p>
+          </div>
+          <div class="text-center">
+            <div class="mb-4">
+              <svg class="w-12 h-12 mx-auto float-animation" viewBox="0 0 24 24" fill="none">
+                <path d="M12 15V17M6 21H18C19.1046 21 20 20.1046 20 19V9C20 7.89543 19.1046 7 18 7H6C4.89543 7 4 7.89543 4 9V19C4 20.1046 4.89543 21 6 21ZM16 7V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V7H16Z" stroke="#22D3EE" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="text-xl font-bold text-purple-400 mb-2">100% Secure</div>
+            <p class="text-gray-400">Safe and private browsing</p>
+          </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 mb-8">
+          <h2 class="text-3xl font-bold text-left text-purple-400 mb-6">What is Doge Unblocker? 🤔</h2>
+          <div class="text-left space-y-4 text-gray-300 leading-relaxed">
+            <p>Doge Unblocker is a web proxy that helps you access your premises' restricted or censored content. Millions of platforms make your lives easy, from learning tools to gaming platforms.</p>
+            <p>But not every website or online platform is accessible in every country or region. For example, if you love to play Roblox and your school's authority has restricted it to play in the school.</p>
+            <p>You can access every blocked website easily with our website unblocker. No worries, Roblox Doge Unblocker will unlock Roblox, and you can enjoy the game from your school.</p>
+          </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 mb-8">
+          <h2 class="text-3xl font-bold text-left text-purple-400 mb-6">How to Use Doge Unblocker for Roblox? 🎮</h2>
+          <div class="text-left space-y-4 text-gray-300 leading-relaxed">
+            <p>Want to play Roblox on your school computer? Doge Unblocker acts like an emulator, letting you access restricted content within minutes - no complex process required!</p>
+            <p>Follow these simple steps to unblock Roblox:</p>
+            <ol class="list-decimal list-inside space-y-2 pl-4">
+              <li>Open your PC's web browser 💻</li>
+              <li>Visit <a href="/" class="text-purple-400 hover:underline">https://dogeunblocker.net</a> 🔗</li>
+              <li>Enter "Roblox.com" in the URL box</li>
+              <li>Click "Access" to unblock the site</li>
+              <li>Log in to your Roblox account and start playing!</li>
+            </ol>
+            <p class="mt-4">What are you waiting for? Break free from restrictions and enjoy gaming! If you find our unblocker tool helpful, please share it with your friends.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <footer class="bg-gray-800/50 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <p class="text-sm text-gray-400">© 2025 <a href="/" class="text-purple-500">DogeUnblocker.net</a>, All rights reserved.</p>
+      </div>
+      <div class="flex justify-end space-x-6">
+        <a href="/" class="text-sm text-gray-400 hover:text-purple-400">Home</a>
+        <a href="/about" class="text-sm text-gray-400 hover:text-purple-400">About</a>
+        <a href="/contact" class="text-sm text-gray-400 hover:text-purple-400">Contact</a>
+        <a href="/faqs" class="text-sm text-gray-400 hover:text-purple-400">FAQs</a>
+        <a href="/privacy" class="text-sm text-gray-400 hover:text-purple-400">Privacy</a>
+        <a href="/terms" class="text-sm text-gray-400 hover:text-purple-400">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer> 
+
+    
+<script>
+  function $(id) {
+    return document.getElementById(id);
+  }
+
+  $('unblocker-form').onsubmit = function() {
+    var url = $('url').value;
+    if (url.substr(0, 4) != "http") {
+      if (url.includes('.') && !url.includes(' ')) {
+        url = "https://" + url;
+      } else {
+        url = "https://google.com/search?q=" + encodeURIComponent(url);
+      }
+    }
+    window.open('/proxy/' + url, '_blank');
+    return false;
+  };
+
+  window.onload = function() {
+    $('url').focus();
+  }
+
+  particlesJS('particles-js', {
+    particles: {
+      number: {
+        value: 80,
+        density: {
+          enable: true,
+          value_area: 800
+        }
+      },
+      color: {
+        value: '#B133FF'
+      },
+      shape: {
+        type: 'circle'
+      },
+      opacity: {
+        value: 0.5,
+        random: false
+      },
+      size: {
+        value: 3,
+        random: true
+      },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: '#B133FF',
+        opacity: 0.2,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 2,
+        direction: 'none',
+        random: false,
+        straight: false,
+        out_mode: 'out',
+        bounce: false
+      }
+    },
+    interactivity: {
+      detect_on: 'canvas',
+      events: {
+        onhover: {
+          enable: true,
+          mode: 'grab'
+        },
+        onclick: {
+          enable: true,
+          mode: 'push'
+        },
+        resize: true
+      },
+      modes: {
+        grab: {
+          distance: 140,
+          line_linked: {
+            opacity: 1
+          }
+        },
+        push: {
+          particles_nb: 4
+        }
+      }
+    },
+    retina_detect: true
+  });
+</script>
+
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "q7l38ifhk3");
+    </script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"d0924fa8ba254166a0e4c157102c2b81","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
