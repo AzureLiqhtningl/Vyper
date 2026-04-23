@@ -17,14 +17,11 @@
 			flex-direction: column;
 			min-height: 100vh;
 		}
-
 		.settings-layout {
 			display: flex;
 			min-height: 100vh;
 			padding-top: 80px;
 		}
-
-		/* Sidebar */
 		.settings-sidebar {
 			width: 220px;
 			flex-shrink: 0;
@@ -40,7 +37,6 @@
 			height: calc(100vh - 80px);
 			overflow-y: auto;
 		}
-
 		.settings-sidebar button {
 			display: flex;
 			align-items: center;
@@ -57,21 +53,17 @@
 			transition: all 0.2s ease;
 			width: 100%;
 		}
-
 		.settings-sidebar button:hover {
 			background: rgba(88,240,12,0.08);
 			color: #58F00C;
 		}
-
 		.settings-sidebar button.active {
 			background: rgba(88,240,12,0.15);
 			color: #58F00C;
 			border: 1px solid rgba(88,240,12,0.3);
 			text-shadow: 0 0 6px #58F00C;
 		}
-
 		.sidebar-icon { font-size: 18px; flex-shrink: 0; }
-
 		.badge {
 			margin-left: auto;
 			font-size: 10px;
@@ -82,23 +74,18 @@
 			letter-spacing: 0.5px;
 		}
 		.badge-updated { background: #58F00C; color: #000; }
-
-		/* Main content */
 		.settings-main {
 			margin-left: 220px;
 			flex: 1;
 			padding: 40px 48px;
 			max-width: 800px;
 		}
-
 		.settings-section { display: none; }
 		.settings-section.active { display: block; animation: fadeIn 0.25s ease; }
-
 		@keyframes fadeIn {
 			from { opacity: 0; transform: translateY(8px); }
 			to { opacity: 1; transform: translateY(0); }
 		}
-
 		.settings-section h2 {
 			font-family: 'Space Mono', monospace;
 			font-size: 26px;
@@ -107,18 +94,12 @@
 			margin: 0 0 28px 0;
 			animation: neonPulse 2.5s ease-in-out infinite;
 		}
-
 		@keyframes neonPulse {
 			0% { text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C; }
 			50% { text-shadow: 0 0 12px #58F00C, 0 0 24px #58F00C, 0 0 36px #58F00C; }
 			100% { text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C; }
 		}
-
-		/* Credit cards */
-		.credit-group {
-			margin-bottom: 28px;
-		}
-
+		.credit-group { margin-bottom: 28px; }
 		.credit-group h3 {
 			font-family: 'JetBrains Mono', monospace;
 			font-size: 13px;
@@ -128,7 +109,6 @@
 			margin: 0 0 10px 0;
 			opacity: 0.8;
 		}
-
 		.credit-item {
 			background: rgba(88,240,12,0.04);
 			border: 1px solid rgba(88,240,12,0.2);
@@ -140,13 +120,7 @@
 			margin-bottom: 8px;
 			transition: border-color 0.2s;
 		}
-
-		.credit-item:hover {
-			border-color: rgba(88,240,12,0.5);
-			color: #fff;
-		}
-
-		/* Settings rows */
+		.credit-item:hover { border-color: rgba(88,240,12,0.5); color: #fff; }
 		.setting-row {
 			display: flex;
 			align-items: center;
@@ -158,33 +132,21 @@
 			margin-bottom: 14px;
 			transition: border-color 0.2s;
 		}
-
 		.setting-row:hover { border-color: rgba(88,240,12,0.4); }
-
 		.setting-row h3 {
 			font-family: 'JetBrains Mono', monospace;
 			font-size: 14px;
 			color: #fff;
 			margin: 0 0 4px 0;
 		}
-
 		.setting-row p {
 			font-size: 13px;
 			color: #888;
 			margin: 0;
 			font-family: 'Pixelify Sans', sans-serif;
 		}
-
-		/* Toggle switch */
-		.toggle {
-			position: relative;
-			width: 44px;
-			height: 24px;
-			flex-shrink: 0;
-		}
-
+		.toggle { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
 		.toggle input { display: none; }
-
 		.toggle-slider {
 			position: absolute;
 			inset: 0;
@@ -193,7 +155,6 @@
 			cursor: pointer;
 			transition: background 0.3s;
 		}
-
 		.toggle-slider::before {
 			content: '';
 			position: absolute;
@@ -205,11 +166,8 @@
 			left: 3px;
 			transition: transform 0.3s;
 		}
-
 		.toggle input:checked + .toggle-slider { background: #58F00C; }
 		.toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
-
-		/* Partners */
 		.partner-item {
 			background: rgba(88,240,12,0.04);
 			border: 1px solid rgba(88,240,12,0.2);
@@ -221,14 +179,11 @@
 			margin-bottom: 8px;
 			transition: all 0.2s;
 		}
-
 		.partner-item:hover {
 			border-color: rgba(88,240,12,0.5);
 			color: #fff;
 			background: rgba(88,240,12,0.08);
 		}
-
-		/* Coming soon */
 		.coming-soon {
 			background: rgba(88,240,12,0.04);
 			border: 1px solid rgba(88,240,12,0.2);
@@ -239,15 +194,12 @@
 			font-family: 'JetBrains Mono', monospace;
 			font-size: 14px;
 		}
-
-		/* Nav override for this page */
 		nav a, nav button, nav span {
 			font-family: 'Pixelify Sans', sans-serif !important;
 		}
 	</style>
 </head>
 <body>
-	<!-- Top Nav -->
 	<nav class="sidebar">
 		<div class="sidebar-header">
 			<img class="sidebar-logo" src="logo.png" alt="Vyper" />
@@ -257,11 +209,11 @@
 			<li><a href="index.html" class="nav-link">🌐 Home</a></li>
 			<li><a href="games.html" class="nav-link">🎮 Games</a></li>
 			<li><a href="movies.html" class="nav-link">🎬 Movies</a></li>
+			<li><a href="settings.html" class="nav-link active">⚙️ Settings</a></li>
 		</ul>
 	</nav>
 
 	<div class="settings-layout">
-		<!-- Left Sidebar -->
 		<div class="settings-sidebar">
 			<button class="active" onclick="showSection('credits', this)">
 				<span class="sidebar-icon">ℹ️</span> Credits
@@ -281,38 +233,31 @@
 			</button>
 		</div>
 
-		<!-- Main Content -->
 		<div class="settings-main">
 
 			<!-- CREDITS -->
 			<div id="section-credits" class="settings-section active">
 				<h2>Credits ℹ️</h2>
-
 				<div class="credit-group">
 					<h3>Owner(s)</h3>
 					<div class="credit-item">wxrmhole &amp; AzureLiqhtning</div>
 				</div>
-
 				<div class="credit-group">
 					<h3>Developer(s)</h3>
 					<div class="credit-item">King</div>
 				</div>
-
 				<div class="credit-group">
 					<h3>Games</h3>
 					<div class="credit-item">LuminSDK — Magic Leap</div>
 				</div>
-
 				<div class="credit-group">
 					<h3>Movies</h3>
 					<div class="credit-item">Nova — ambr0sial</div>
 				</div>
-
 				<div class="credit-group">
 					<h3>AI</h3>
 					<div class="credit-item">Gemini API — Google</div>
 				</div>
-
 				<div class="credit-group">
 					<h3>Music</h3>
 					<div class="credit-item">None Yet!</div>
@@ -329,7 +274,7 @@
 					</div>
 					<input type="text" placeholder="e.g. Google Classroom"
 						style="font-family:'JetBrains Mono',monospace; font-size:13px; background:rgba(88,240,12,0.05); border:1px solid rgba(88,240,12,0.3); border-radius:6px; padding:8px 12px; color:#C4C4C4; outline:none; width:200px;"
-						oninput="document.title = this.value || 'Vyper'" />
+						oninput="document.title = this.value || 'Vyper | Settings'" />
 				</div>
 				<div class="setting-row">
 					<div>
@@ -381,12 +326,10 @@
 			<!-- PARTNERS -->
 			<div id="section-partners" class="settings-section">
 				<h2>Partners 🤝</h2>
-
 				<div class="credit-group">
 					<h3>Servers</h3>
 					<div class="partner-item">prxy info — King</div>
 				</div>
-
 				<div class="credit-group">
 					<h3>People</h3>
 					<div class="partner-item">Eben Lee 🤩</div>
@@ -411,7 +354,6 @@
 			document.head.appendChild(link);
 		}
 
-		// Restore ad blocker toggles from localStorage
 		document.querySelectorAll('.toggle input[type=checkbox]').forEach(toggle => {
 			const key = toggle.getAttribute('onchange').match(/'(\w+)'/)[1];
 			const saved = localStorage.getItem(key);
