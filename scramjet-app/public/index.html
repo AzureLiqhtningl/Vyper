@@ -1,22 +1,17 @@
 <!doctype html>
 <html>
-
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 	<title>Vyper</title>
-
 	<link rel="shortcut icon" href="logo.png" />
-
 	<script src="/scram/scramjet.all.js"></script>
 	<script src="/baremux/index.js"></script>
-
 	<link rel="stylesheet" href="index.css" />
 	<script src="register-sw.js" defer></script>
 	<script src="search.js" defer></script>
 	<script src="index.js" defer></script>
 </head>
-
 <body>
 	<!-- Sidebar Navigation -->
 	<nav class="sidebar">
@@ -30,32 +25,40 @@
 			<li><a href="movies.html" class="nav-link">🎬 Movies</a></li>
 		</ul>
 	</nav>
-
 	<!-- Main Content -->
 	<div class="main-container">
 		<div class="content-wrapper">
 			<div class="hero-section">
 				<h1 class="hero-title">Vyper</h1>
 				<p class="hero-subtitle">Vyper is best proxy trust.</p>
+				<div style="display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 12px;">
+					<span id="hero-clock" style="font-family: 'Space Mono', monospace; font-size: 22px; color: #58F00C; text-shadow: 0 0 8px #58F00C;"></span>
+					<span id="hero-date" style="font-family: 'Pixelify Sans', sans-serif; font-size: 15px; color: #C4C4C4;"></span>
+					<a href="https://discord.gg/n2vPSdJtY4" target="_blank" style="font-family: 'Pixelify Sans', sans-serif; font-size: 14px; color: #58F00C; text-decoration: none; border: 1px solid #58F00C; border-radius: 6px; padding: 5px 14px; margin-top: 4px; transition: background 0.2s;" onmouseover="this.style.background='rgba(88,240,12,0.12)'" onmouseout="this.style.background='transparent'">Join our Discord</a>
+				</div>
 			</div>
-
 			<form id="sj-form" class="search-form">
 				<input id="sj-search-engine" value="https://search.brave.com/search?q=%s" type="hidden" />
 				<input id="sj-address" type="text" placeholder="Enter URL or search..." class="search-input" />
 				<button type="submit" class="search-btn">Search</button>
 			</form>
-
 			<div class="info-box">
 				<p>Vyper is a web proxy designed to bypass restrictions and access the web freely.</p>
 			</div>
-
 			<div class="error-container">
 				<p id="sj-error"></p>
 				<pre id="sj-error-code"></pre>
 			</div>
 		</div>
 	</div>
-
+	<script>
+		function updateClock() {
+			const now = new Date();
+			document.getElementById('hero-clock').textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+			document.getElementById('hero-date').textContent = now.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+		}
+		updateClock();
+		setInterval(updateClock, 1000);
+	</script>
 </body>
-
 </html>
