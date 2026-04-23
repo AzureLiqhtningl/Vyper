@@ -1,0 +1,422 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<title>Vyper | Settings</title>
+	<link rel="shortcut icon" href="logo.png" />
+	<link rel="stylesheet" href="index.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Pixelify+Sans:wght@400;700&family=Atomic+Age&family=Exo+2:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<style>
+		body {
+			font-family: 'Pixelify Sans', sans-serif;
+			background: #000;
+			color: #C4C4C4;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+
+		.settings-layout {
+			display: flex;
+			min-height: 100vh;
+			padding-top: 80px;
+		}
+
+		/* Sidebar */
+		.settings-sidebar {
+			width: 220px;
+			flex-shrink: 0;
+			background: rgba(0,0,0,0.6);
+			border-right: 1px solid rgba(88,240,12,0.15);
+			padding: 24px 12px;
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+			position: fixed;
+			top: 80px;
+			left: 0;
+			height: calc(100vh - 80px);
+			overflow-y: auto;
+		}
+
+		.settings-sidebar button {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 12px 14px;
+			border: none;
+			border-radius: 8px;
+			background: transparent;
+			color: #C4C4C4;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 14px;
+			cursor: pointer;
+			text-align: left;
+			transition: all 0.2s ease;
+			width: 100%;
+		}
+
+		.settings-sidebar button:hover {
+			background: rgba(88,240,12,0.08);
+			color: #58F00C;
+		}
+
+		.settings-sidebar button.active {
+			background: rgba(88,240,12,0.15);
+			color: #58F00C;
+			border: 1px solid rgba(88,240,12,0.3);
+			text-shadow: 0 0 6px #58F00C;
+		}
+
+		.sidebar-icon { font-size: 18px; flex-shrink: 0; }
+
+		.badge {
+			margin-left: auto;
+			font-size: 10px;
+			font-weight: 700;
+			padding: 2px 7px;
+			border-radius: 4px;
+			font-family: 'JetBrains Mono', monospace;
+			letter-spacing: 0.5px;
+		}
+		.badge-updated { background: #58F00C; color: #000; }
+
+		/* Main content */
+		.settings-main {
+			margin-left: 220px;
+			flex: 1;
+			padding: 40px 48px;
+			max-width: 800px;
+		}
+
+		.settings-section { display: none; }
+		.settings-section.active { display: block; animation: fadeIn 0.25s ease; }
+
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(8px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		.settings-section h2 {
+			font-family: 'Space Mono', monospace;
+			font-size: 26px;
+			color: #58F00C;
+			text-shadow: 0 0 8px #58F00C, 0 0 16px #58F00C;
+			margin: 0 0 28px 0;
+			animation: neonPulse 2.5s ease-in-out infinite;
+		}
+
+		@keyframes neonPulse {
+			0% { text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C; }
+			50% { text-shadow: 0 0 12px #58F00C, 0 0 24px #58F00C, 0 0 36px #58F00C; }
+			100% { text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C; }
+		}
+
+		/* Credit cards */
+		.credit-group {
+			margin-bottom: 28px;
+		}
+
+		.credit-group h3 {
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 13px;
+			color: #58F00C;
+			text-transform: uppercase;
+			letter-spacing: 1.5px;
+			margin: 0 0 10px 0;
+			opacity: 0.8;
+		}
+
+		.credit-item {
+			background: rgba(88,240,12,0.04);
+			border: 1px solid rgba(88,240,12,0.2);
+			border-radius: 8px;
+			padding: 12px 16px;
+			font-family: 'Pixelify Sans', sans-serif;
+			font-size: 15px;
+			color: #C4C4C4;
+			margin-bottom: 8px;
+			transition: border-color 0.2s;
+		}
+
+		.credit-item:hover {
+			border-color: rgba(88,240,12,0.5);
+			color: #fff;
+		}
+
+		/* Settings rows */
+		.setting-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 16px 20px;
+			background: rgba(88,240,12,0.04);
+			border: 1px solid rgba(88,240,12,0.2);
+			border-radius: 10px;
+			margin-bottom: 14px;
+			transition: border-color 0.2s;
+		}
+
+		.setting-row:hover { border-color: rgba(88,240,12,0.4); }
+
+		.setting-row h3 {
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 14px;
+			color: #fff;
+			margin: 0 0 4px 0;
+		}
+
+		.setting-row p {
+			font-size: 13px;
+			color: #888;
+			margin: 0;
+			font-family: 'Pixelify Sans', sans-serif;
+		}
+
+		/* Toggle switch */
+		.toggle {
+			position: relative;
+			width: 44px;
+			height: 24px;
+			flex-shrink: 0;
+		}
+
+		.toggle input { display: none; }
+
+		.toggle-slider {
+			position: absolute;
+			inset: 0;
+			background: #333;
+			border-radius: 999px;
+			cursor: pointer;
+			transition: background 0.3s;
+		}
+
+		.toggle-slider::before {
+			content: '';
+			position: absolute;
+			width: 18px;
+			height: 18px;
+			background: #fff;
+			border-radius: 50%;
+			top: 3px;
+			left: 3px;
+			transition: transform 0.3s;
+		}
+
+		.toggle input:checked + .toggle-slider { background: #58F00C; }
+		.toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+		/* Partners */
+		.partner-item {
+			background: rgba(88,240,12,0.04);
+			border: 1px solid rgba(88,240,12,0.2);
+			border-radius: 8px;
+			padding: 14px 18px;
+			font-family: 'Pixelify Sans', sans-serif;
+			font-size: 15px;
+			color: #C4C4C4;
+			margin-bottom: 8px;
+			transition: all 0.2s;
+		}
+
+		.partner-item:hover {
+			border-color: rgba(88,240,12,0.5);
+			color: #fff;
+			background: rgba(88,240,12,0.08);
+		}
+
+		/* Coming soon */
+		.coming-soon {
+			background: rgba(88,240,12,0.04);
+			border: 1px solid rgba(88,240,12,0.2);
+			border-radius: 10px;
+			padding: 32px;
+			text-align: center;
+			color: #555;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 14px;
+		}
+
+		/* Nav override for this page */
+		nav a, nav button, nav span {
+			font-family: 'Pixelify Sans', sans-serif !important;
+		}
+	</style>
+</head>
+<body>
+	<!-- Top Nav -->
+	<nav class="sidebar">
+		<div class="sidebar-header">
+			<img class="sidebar-logo" src="logo.png" alt="Vyper" />
+			<h2>Vyper</h2>
+		</div>
+		<ul class="nav-links">
+			<li><a href="index.html" class="nav-link">🌐 Home</a></li>
+			<li><a href="games.html" class="nav-link">🎮 Games</a></li>
+			<li><a href="movies.html" class="nav-link">🎬 Movies</a></li>
+		</ul>
+	</nav>
+
+	<div class="settings-layout">
+		<!-- Left Sidebar -->
+		<div class="settings-sidebar">
+			<button class="active" onclick="showSection('credits', this)">
+				<span class="sidebar-icon">ℹ️</span> Credits
+			</button>
+			<button onclick="showSection('cloaking', this)">
+				<span class="sidebar-icon">🕵️</span> Cloaking
+			</button>
+			<button onclick="showSection('themes', this)">
+				<span class="sidebar-icon">🎨</span> Themes
+				<span class="badge badge-updated">UPDATED</span>
+			</button>
+			<button onclick="showSection('ads', this)">
+				<span class="sidebar-icon">⚡</span> Ads
+			</button>
+			<button onclick="showSection('partners', this)">
+				<span class="sidebar-icon">🤝</span> Partners
+			</button>
+		</div>
+
+		<!-- Main Content -->
+		<div class="settings-main">
+
+			<!-- CREDITS -->
+			<div id="section-credits" class="settings-section active">
+				<h2>Credits ℹ️</h2>
+
+				<div class="credit-group">
+					<h3>Owner(s)</h3>
+					<div class="credit-item">wxrmhole &amp; AzureLiqhtning</div>
+				</div>
+
+				<div class="credit-group">
+					<h3>Developer(s)</h3>
+					<div class="credit-item">King</div>
+				</div>
+
+				<div class="credit-group">
+					<h3>Games</h3>
+					<div class="credit-item">LuminSDK — Magic Leap</div>
+				</div>
+
+				<div class="credit-group">
+					<h3>Movies</h3>
+					<div class="credit-item">Nova — ambr0sial</div>
+				</div>
+
+				<div class="credit-group">
+					<h3>AI</h3>
+					<div class="credit-item">Gemini API — Google</div>
+				</div>
+
+				<div class="credit-group">
+					<h3>Music</h3>
+					<div class="credit-item">None Yet!</div>
+				</div>
+			</div>
+
+			<!-- CLOAKING -->
+			<div id="section-cloaking" class="settings-section">
+				<h2>Cloaking 🕵️</h2>
+				<div class="setting-row">
+					<div>
+						<h3>Tab Title</h3>
+						<p>Change the browser tab title to disguise the page</p>
+					</div>
+					<input type="text" placeholder="e.g. Google Classroom"
+						style="font-family:'JetBrains Mono',monospace; font-size:13px; background:rgba(88,240,12,0.05); border:1px solid rgba(88,240,12,0.3); border-radius:6px; padding:8px 12px; color:#C4C4C4; outline:none; width:200px;"
+						oninput="document.title = this.value || 'Vyper'" />
+				</div>
+				<div class="setting-row">
+					<div>
+						<h3>Tab Icon</h3>
+						<p>Change the favicon to disguise the tab</p>
+					</div>
+					<select onchange="changeFavicon(this.value)"
+						style="font-family:'JetBrains Mono',monospace; font-size:13px; background:#111; border:1px solid rgba(88,240,12,0.3); border-radius:6px; padding:8px 12px; color:#C4C4C4; outline:none;">
+						<option value="logo.png">Vyper (default)</option>
+						<option value="https://www.google.com/favicon.ico">Google</option>
+						<option value="https://static.classdojo.com/img/favicons/favicon.ico">ClassDojo</option>
+						<option value="https://ssl.gstatic.com/classroom/favicon.png">Google Classroom</option>
+						<option value="https://www.youtube.com/favicon.ico">YouTube</option>
+					</select>
+				</div>
+			</div>
+
+			<!-- THEMES -->
+			<div id="section-themes" class="settings-section">
+				<h2>Themes 🎨</h2>
+				<div class="coming-soon">Theme customization coming soon!</div>
+			</div>
+
+			<!-- ADS -->
+			<div id="section-ads" class="settings-section">
+				<h2>Ads ⚡</h2>
+				<div class="setting-row">
+					<div>
+						<h3>Ad Blocker</h3>
+						<p>Block ads on proxied sites</p>
+					</div>
+					<label class="toggle">
+						<input type="checkbox" checked onchange="localStorage.setItem('adblock', this.checked)" />
+						<span class="toggle-slider"></span>
+					</label>
+				</div>
+				<div class="setting-row">
+					<div>
+						<h3>Popup Blocker</h3>
+						<p>Block popup windows on proxied sites</p>
+					</div>
+					<label class="toggle">
+						<input type="checkbox" checked onchange="localStorage.setItem('popupblock', this.checked)" />
+						<span class="toggle-slider"></span>
+					</label>
+				</div>
+			</div>
+
+			<!-- PARTNERS -->
+			<div id="section-partners" class="settings-section">
+				<h2>Partners 🤝</h2>
+
+				<div class="credit-group">
+					<h3>Servers</h3>
+					<div class="partner-item">prxy info — King</div>
+				</div>
+
+				<div class="credit-group">
+					<h3>People</h3>
+					<div class="partner-item">Eben Lee 🤩</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script>
+		function showSection(id, btn) {
+			document.querySelectorAll('.settings-section').forEach(s => s.classList.remove('active'));
+			document.querySelectorAll('.settings-sidebar button').forEach(b => b.classList.remove('active'));
+			document.getElementById('section-' + id).classList.add('active');
+			btn.classList.add('active');
+		}
+
+		function changeFavicon(url) {
+			const link = document.querySelector("link[rel='shortcut icon']") || document.createElement('link');
+			link.rel = 'shortcut icon';
+			link.href = url;
+			document.head.appendChild(link);
+		}
+
+		// Restore ad blocker toggles from localStorage
+		document.querySelectorAll('.toggle input[type=checkbox]').forEach(toggle => {
+			const key = toggle.getAttribute('onchange').match(/'(\w+)'/)[1];
+			const saved = localStorage.getItem(key);
+			if (saved !== null) toggle.checked = saved === 'true';
+		});
+	</script>
+</body>
+</html>
