@@ -7,7 +7,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-HGL07M90WG');
     </script>
     <meta charset="UTF-8">
@@ -19,9 +18,7 @@
     <meta content="https://raw.githubusercontent.com/AzureLiqhtningl/Vyper/main/logo.png" property="og:image"/>
     <meta content="#58F00C" data-react-helmet="true" name="theme-color"/>
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/AzureLiqhtningl/Vyper/main/logo.png">
-        <link
-        href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Pixelify+Sans:wght@400;700&family=Atomic+Age&family=Exo+2:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Pixelify+Sans:wght@400;700&family=Atomic+Age&family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.3/cdn.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="sources.js"></script>
@@ -53,72 +50,30 @@
             backdrop-filter: blur(10px);
             border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .settings-content {
-            background: rgba(17, 17, 17, 0.3);
-        }
-
-        .source-option {
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .source-option:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .source-option.selected {
-            border-color: #58F00C;
-            background: rgba(88, 240, 12, 0.1);
-        }
-
-        .source-option.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
+        .settings-content { background: rgba(17, 17, 17, 0.3); }
+        .source-option { transition: all 0.3s ease; border: 2px solid transparent; }
+        .source-option:hover { background: rgba(255, 255, 255, 0.05); }
+        .source-option.selected { border-color: #58F00C; background: rgba(88, 240, 12, 0.1); }
         .glass-effect {
             background: rgba(17, 17, 17, 0.7);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-
-        .nav-link {
-            position: relative;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            font-family: 'Space Mono', monospace;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background: #58F00C;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover {
-            color: #58F00C;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
+        .nav-link { position: relative; transition: all 0.3s ease; padding: 0.5rem 0; font-family: 'Space Mono', monospace; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; background: #58F00C; transition: all 0.3s ease; transform: translateX(-50%); }
+        .nav-link:hover { color: #58F00C; }
+        .nav-link:hover::after { width: 100%; }
     </style>
 </head>
-<body class="bg-vyper-bg text-vyper-text min-h-screen font-sans" x-data="{ 
-    activeSection: 'default-source', 
+<body class="bg-vyper-bg text-vyper-text min-h-screen font-sans" x-data="{
+    activeSection: 'default-source',
     mobileMenu: false,
     showMobileWarning: window.innerWidth < 768,
     isMobileWarningDismissed: false,
     showParticles: localStorage.getItem('showParticles') === null ? true : localStorage.getItem('showParticles') !== 'false',
     showUpdateNotice: localStorage.getItem('showUpdateNotice') === null ? true : localStorage.getItem('showUpdateNotice') !== 'false',
+    showPopupReminder: localStorage.getItem('showPopupReminder') !== 'false',
     toggleParticles() {
         this.showParticles = !this.showParticles;
         localStorage.setItem('showParticles', this.showParticles);
@@ -129,6 +84,10 @@
         localStorage.setItem('showUpdateNotice', this.showUpdateNotice);
         window.dispatchEvent(new Event('appearance-changed'));
     },
+    togglePopupReminder() {
+        this.showPopupReminder = !this.showPopupReminder;
+        localStorage.setItem('showPopupReminder', this.showPopupReminder);
+    },
     selectedLanguage: localStorage.getItem('selectedLanguage') || 'en',
     changeLanguage(newLanguage) {
         this.selectedLanguage = newLanguage;
@@ -137,7 +96,7 @@
     }
 }">
     <!-- mobile warning -->
-    <div x-show="showMobileWarning && !isMobileWarningDismissed" 
+    <div x-show="showMobileWarning && !isMobileWarningDismissed"
          class="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 px-4"
          x-transition:enter="transition ease-out duration-300"
          x-transition:enter-start="opacity-0 transform scale-95"
@@ -153,7 +112,7 @@
             </div>
             <h3 class="text-xl font-semibold text-vyper-accent">Mobile Experience Limited</h3>
             <p class="text-gray-300">The settings page isn't fully optimized for mobile devices yet. For the best experience, please use a desktop browser.</p>
-            <button @click="isMobileWarningDismissed = true" 
+            <button @click="isMobileWarningDismissed = true"
                     class="bg-vyper-accent hover:bg-vyper-accent/80 hover:text-vyper-bg text-vyper-text px-6 py-2 rounded-lg transition-colors duration-300">
                 I understand
             </button>
@@ -171,18 +130,16 @@
                             style="text-shadow: 0 0 6px #58F00C, 0 0 12px #58F00C;">Vyper</span>
                     </a>
                     <div class="hidden md:flex space-x-6">
-                            <button @click="window.location.href='movies.html?watchlater=true'" class="nav-link flex items-center space-x-2">
-                                <span>Watch Later</span>
-                            </button>
-                            <a href="https://github.com/AzureLiqhtningl/Vyper" target="_blank"
-                                class="nav-link flex items-center">
-                                <span>GitHub</span>
-                            </a>
-                            <a href="https://discord.gg/yGfnw6vk" target="_blank"
-                                class="nav-link flex items-center">
-                                <span>Discord</span>
-                            </a>
-                        </div>
+                        <button @click="window.location.href='movies.html?watchlater=true'" class="nav-link flex items-center space-x-2">
+                            <span>Watch Later</span>
+                        </button>
+                        <a href="https://github.com/AzureLiqhtningl/Vyper" target="_blank" class="nav-link flex items-center">
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://discord.gg/yGfnw6vk" target="_blank" class="nav-link flex items-center">
+                            <span>Discord</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <button @click="mobileMenu = !mobileMenu" class="md:hidden text-gray-300 hover:text-vyper-text">
@@ -192,8 +149,7 @@
                     </button>
                 </div>
             </div>
-            
-            <div x-show="mobileMenu" 
+            <div x-show="mobileMenu"
                 x-transition:enter="transition ease-out duration-200"
                 x-transition:enter-start="opacity-0 transform -translate-y-2"
                 x-transition:enter-end="opacity-100 transform translate-y-0"
@@ -202,13 +158,13 @@
                 x-transition:leave-end="opacity-0 transform -translate-y-2"
                 class="md:hidden mt-4 pb-4">
                 <div class="flex flex-col space-y-4">
-                    <button @click="window.location.href='movies.html?watchlater=true'" 
+                    <button @click="window.location.href='movies.html?watchlater=true'"
                             class="flex items-center justify-between px-4 py-2 hover:bg-vyper-bg rounded-lg transition-colors border border-transparent hover:border-white/10">
                         <span>Watch Later</span>
                     </button>
-                    <a href="https://github.com/AzureLiqhtningl/Vyper" target="_blank" 
+                    <a href="https://github.com/AzureLiqhtningl/Vyper" target="_blank"
                        class="px-4 py-2 hover:bg-vyper-bg rounded-lg transition-colors border border-transparent hover:border-white/10">GitHub</a>
-                    <a href="https://discord.gg/yGfnw6vk" target="_blank" 
+                    <a href="https://discord.gg/yGfnw6vk" target="_blank"
                        class="px-4 py-2 hover:bg-vyper-bg rounded-lg transition-colors border border-transparent hover:border-white/10">Discord</a>
                 </div>
             </div>
@@ -221,13 +177,13 @@
             <button @click="window.history.back()" class="text-left px-4 py-2 rounded-lg hover:bg-vyper-accent/50 transition-colors mb-2">Back</button>
             <hr class="border-gray-600 mb-2">
             <div class="flex flex-col space-y-2">
-                <button 
+                <button
                     @click="activeSection = 'default-source'"
                     :class="{'bg-vyper-accent': activeSection === 'default-source'}"
                     class="text-left px-4 py-2 rounded-lg hover:bg-vyper-accent/50 transition-colors">
                     Default Source
                 </button>
-                <button 
+                <button
                     @click="activeSection = 'appearance'"
                     :class="{'bg-vyper-accent': activeSection === 'appearance'}"
                     class="text-left px-4 py-2 rounded-lg hover:bg-vyper-accent/50 transition-colors">
@@ -245,9 +201,7 @@
                 </div>
 
                 <div class="bg-gradient-to-r from-vyper-accent/10 via-vyper-accent/20 to-vyper-accent/10 border border-vyper-accent/20 p-6 rounded-xl mb-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-vyper-accent/10 px-4 py-1 rounded-bl-lg text-vyper-accent text-xs font-medium">
-                        WIP
-                    </div>
+                    <div class="absolute top-0 right-0 bg-vyper-accent/10 px-4 py-1 rounded-bl-lg text-vyper-accent text-xs font-medium">WIP</div>
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-vyper-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-vyper-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -267,8 +221,7 @@
                         <h2 class="text-2xl font-semibold mb-2">Default Source</h2>
                         <p class="text-gray-400">Choose your preferred default source for streaming content. This setting will be remembered across sessions.</p>
                     </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" x-data="{ 
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" x-data="{
                         selectedSource: localStorage.getItem('defaultSource') || 'vidsrccc',
                         setSource(sourceId) {
                             this.selectedSource = sourceId;
@@ -276,7 +229,7 @@
                         }
                     }">
                         <template x-for="source in availableSources" :key="source.id">
-                            <div 
+                            <div
                                 @click="setSource(source.id)"
                                 :class="{'selected': selectedSource === source.id}"
                                 class="source-option bg-vyper-bg border border-white/10 rounded-lg p-4 cursor-pointer">
@@ -285,7 +238,7 @@
                                         <div class="font-medium" x-text="source.name"></div>
                                         <div class="text-sm text-gray-400" x-text="source.isFrench ? 'French Content' : 'English Content'"></div>
                                     </div>
-                                    <div class="w-5 h-5 rounded-full border-2" 
+                                    <div class="w-5 h-5 rounded-full border-2"
                                         :class="selectedSource === source.id ? 'border-vyper-accent bg-vyper-accent' : 'border-slate-600'">
                                     </div>
                                 </div>
@@ -300,16 +253,14 @@
                         <h2 class="text-2xl font-semibold mb-2">Appearance</h2>
                         <p class="text-gray-400">Customize how Vyper looks and feels</p>
                     </div>
-
                     <div class="space-y-6">
-                        <!-- Background Particles Toggle -->
+                        <!-- background particles toggle -->
                         <div class="flex items-center justify-between p-4 bg-vyper-bg border border-white/10 rounded-lg">
                             <div class="space-y-1">
                                 <h3 class="font-medium">Background Particles</h3>
                                 <p class="text-sm text-gray-400">Toggle the animated particle effect in the background of Vyper</p>
                             </div>
-                            <button 
-                                @click="toggleParticles"
+                            <button @click="toggleParticles()"
                                 class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300"
                                 :class="showParticles ? 'bg-vyper-accent' : 'bg-gray-600'">
                                 <span class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"
@@ -323,8 +274,7 @@
                                 <h3 class="font-medium">Update Notice</h3>
                                 <p class="text-sm text-gray-400">Toggle the update notice on the homepage that informs you about the latest updates</p>
                             </div>
-                            <button 
-                                @click="toggleUpdateNotice"
+                            <button @click="toggleUpdateNotice()"
                                 class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300"
                                 :class="showUpdateNotice ? 'bg-vyper-accent' : 'bg-gray-600'">
                                 <span class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"
@@ -338,39 +288,22 @@
                                 <h3 class="font-medium">Popup Reminder</h3>
                                 <p class="text-sm text-gray-400">Toggle the popup reminder to bookmark the site</p>
                             </div>
-                            <button 
-                                @click="showPopupReminder = !showPopupReminder; localStorage.setItem('showPopupReminder', showPopupReminder)"
+                            <button @click="togglePopupReminder()"
                                 class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300"
-                                :class="showPopupReminder ? 'bg-vyper-accent' : 'bg-gray-600'"
-                                x-data="{ showPopupReminder: localStorage.getItem('showPopupReminder') !== 'false' }">
+                                :class="showPopupReminder ? 'bg-vyper-accent' : 'bg-gray-600'">
                                 <span class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"
                                       :class="showPopupReminder ? 'translate-x-6' : 'translate-x-1'"></span>
                             </button>
                         </div>
 
-                        <!-- donation banner toggle -->
-                        <div class="flex items-center justify-between p-4 bg-vyper-bg border border-white/10 rounded-lg">
-                            <div class="space-y-1">
-                                <h3 class="font-medium">Donation Banner</h3>
-                                <p class="text-sm text-gray-400">Toggle the donation banner at the bottom of the homepage</p>
-                            </div>
-                            <button 
-                                @click="showDonationBanner = !showDonationBanner; localStorage.setItem('showDonationBanner', showDonationBanner)"
-                                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300"
-                                :class="showDonationBanner ? 'bg-vyper-accent' : 'bg-gray-600'"
-                                x-data="{ showDonationBanner: localStorage.getItem('showDonationBanner') !== 'false' }">
-                                <span class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300"
-                                      :class="showDonationBanner ? 'translate-x-6' : 'translate-x-1'"></span>
-                            </button>
-                        </div>
-
-                        <!-- content language dropdown -->
+                        <!-- content language -->
                         <div class="flex items-center justify-between p-4 bg-vyper-bg border border-white/10 rounded-lg">
                             <div class="space-y-1">
                                 <h3 class="font-medium">Content Language</h3>
                                 <p class="text-sm text-gray-400">Select the language for content information</p>
                             </div>
-                            <select x-model="selectedLanguage" @change="changeLanguage(selectedLanguage)" class="bg-vyper-bg border border-white/10 text-vyper-text rounded-lg px-4 py-2 pr-8 appearance-none hover:bg-vyper-bg border border-white/5 transition-colors duration-300 focus:ring-2 focus:ring-vyper-accent focus:outline-none">
+                            <select x-model="selectedLanguage" @change="changeLanguage(selectedLanguage)"
+                                class="bg-vyper-bg border border-white/10 text-vyper-text rounded-lg px-4 py-2 pr-8 appearance-none focus:ring-2 focus:ring-vyper-accent focus:outline-none">
                                 <option value="en">English</option>
                                 <option value="fr">French</option>
                             </select>
@@ -382,29 +315,10 @@
     </div>
 
     <script>
-        if (!localStorage.getItem('defaultSource')) {
-            localStorage.setItem('defaultSource', 'embedsu');
-        }
-        if (localStorage.getItem('showParticles') === null) {
-            localStorage.setItem('showParticles', 'true');
-        }
-        if (localStorage.getItem('showUpdateNotice') === null) {
-            localStorage.setItem('showUpdateNotice', 'true');
-        }
-        if (localStorage.getItem('showPopupReminder') === null) {
-            localStorage.setItem('showPopupReminder', 'true');
-        }
-        if (localStorage.getItem('showDonationBanner') === null) {
-            localStorage.setItem('showDonationBanner', 'true');
-        }
+        if (!localStorage.getItem('defaultSource')) localStorage.setItem('defaultSource', 'vidsrccc');
+        if (localStorage.getItem('showParticles') === null) localStorage.setItem('showParticles', 'true');
+        if (localStorage.getItem('showUpdateNotice') === null) localStorage.setItem('showUpdateNotice', 'true');
+        if (localStorage.getItem('showPopupReminder') === null) localStorage.setItem('showPopupReminder', 'true');
     </script>
 </body>
 </html>
-
-<!--
- _   _                 
-| \ | | _____   ____ _ 
-|  \| |/ _ \ \ / / _` |
-| |\  | (_) \ V / (_| |
-|_| \_|\___/ \_/ \__,_|
--->
