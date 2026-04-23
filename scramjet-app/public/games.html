@@ -7,22 +7,14 @@
   <link rel="shortcut icon" href="logo.png" />
   <link rel="stylesheet" href="index.css" />
   <style>
-    body {
-      margin: 0;
-      background: #111;
-    }
-    
+    body { margin: 0; background: #111; }
     .games-container {
       margin-top: 80px;
       width: 100%;
       padding: 20px;
       min-height: calc(100vh - 80px);
     }
-    
-    .games-header {
-      margin-bottom: 30px;
-    }
-    
+    .games-header { margin-bottom: 30px; }
     .games-header h1 {
       font-size: 48px;
       margin: 0 0 10px 0;
@@ -30,30 +22,20 @@
       text-shadow: 0 0 8px #58F00C, 0 0 16px #58F00C, 0 0 24px #58F00C;
       font-family: "Atomic Age", cursive;
     }
-    
     #games {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 20px;
     }
-    
     @media (max-width: 768px) {
-      .games-container {
-        margin-top: 80px;
-        min-height: calc(100vh - 80px);
-      }
+      .games-container { margin-top: 80px; min-height: calc(100vh - 80px); }
     }
-    
     @media (max-width: 480px) {
-      .games-container {
-        margin-top: auto;
-        padding: 15px;
-      }
+      .games-container { margin-top: auto; padding: 15px; }
     }
   </style>
 </head>
 <body>
-  <!-- Sidebar Navigation -->
   <nav class="sidebar">
     <div class="sidebar-header">
       <img class="sidebar-logo" src="logo.png" alt="Vyper" />
@@ -63,9 +45,9 @@
       <li><a href="index.html" class="nav-link">🌐 Home</a></li>
       <li><a href="games.html" class="nav-link active">🎮 Games</a></li>
       <li><a href="movies.html" class="nav-link">🎬 Movies</a></li>
+      <li><a href="settings.html" class="nav-link">⚙️ Settings</a></li>
     </ul>
   </nav>
-
   <div class="games-container">
     <div class="games-header">
       <h1>Games</h1>
@@ -73,7 +55,6 @@
     </div>
     <div id="games"></div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js"></script>
   <script>
     Lumin.init({
@@ -85,6 +66,3 @@
   </script>
 </body>
 </html>
-
-
-
