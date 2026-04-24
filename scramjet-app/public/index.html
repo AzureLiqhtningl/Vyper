@@ -59,9 +59,109 @@
 			margin-left: auto; flex-shrink: 0; line-height: 1;
 		}
 		#discord-popup-close:hover { color: #fff; }
+
+		/* Browser nav bar */
+		#browser-nav {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 48px;
+			background: #1a1a1a;
+			border-bottom: 1px solid rgba(88,240,12,0.2);
+			z-index: 99998;
+			align-items: center;
+			padding: 0 12px;
+			gap: 8px;
+			box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+		}
+		#browser-nav.visible { display: flex; }
+
+		.nav-btn {
+			background: #2a2a2a;
+			border: 1px solid #3a3a3a;
+			color: #C4C4C4;
+			border-radius: 8px;
+			width: 34px;
+			height: 34px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			font-size: 16px;
+			flex-shrink: 0;
+			transition: all 0.15s ease;
+		}
+		.nav-btn:hover { background: #333; border-color: #58F00C; color: #58F00C; }
+		.nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+		.nav-btn:disabled:hover { background: #2a2a2a; border-color: #3a3a3a; color: #C4C4C4; }
+
+		#nav-url-bar {
+			flex: 1;
+			background: #2a2a2a;
+			border: 1px solid #3a3a3a;
+			border-radius: 999px;
+			height: 34px;
+			display: flex;
+			align-items: center;
+			padding: 0 14px;
+			gap: 8px;
+			cursor: text;
+			transition: border-color 0.2s;
+			overflow: hidden;
+		}
+		#nav-url-bar:focus-within { border-color: #58F00C; }
+
+		#nav-url-bar svg { flex-shrink: 0; opacity: 0.5; }
+
+		#nav-url-input {
+			background: none;
+			border: none;
+			outline: none;
+			color: #C4C4C4;
+			font-family: 'Space Mono', monospace;
+			font-size: 13px;
+			flex: 1;
+			min-width: 0;
+		}
+
+		#nav-home-btn {
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 4px;
+			display: flex;
+			align-items: center;
+			flex-shrink: 0;
+			border-radius: 8px;
+			transition: all 0.15s ease;
+		}
+		#nav-home-btn:hover { background: rgba(88,240,12,0.1); }
+		#nav-home-btn img { width: 28px; height: 28px; object-fit: contain; border-radius: 6px; }
 	</style>
 </head>
 <body>
+	<!-- Browser nav bar (shown when proxy is active) -->
+	<div id="browser-nav">
+		<button class="nav-btn" id="nav-back" title="Go back" disabled>
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+		</button>
+		<button class="nav-btn" id="nav-forward" title="Go forward" disabled>
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+		</button>
+		<button class="nav-btn" id="nav-refresh" title="Refresh">
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+		</button>
+		<div id="nav-url-bar">
+			<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+			<input id="nav-url-input" type="text" placeholder="Search or enter URL" />
+		</div>
+		<button id="nav-home-btn" title="Return to Vyper">
+			<img src="logo.png" alt="Vyper" />
+		</button>
+	</div>
+
 	<nav class="sidebar">
 		<div class="sidebar-header">
 			<img class="sidebar-logo" src="logo.png" alt="Vyper" />
@@ -121,5 +221,4 @@
 		setInterval(updateClock, 1000);
 	</script>
 </body>
-</html>
 </html>
