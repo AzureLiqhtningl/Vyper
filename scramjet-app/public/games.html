@@ -22,16 +22,40 @@
       text-shadow: 0 0 8px #58F00C, 0 0 16px #58F00C, 0 0 24px #58F00C;
       font-family: "Atomic Age", cursive;
     }
+
+    /* Bigger grid cards */
     #games {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
     }
+
+    /* Force LuminSDK cards to fill their grid cell */
+    #games > * {
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    #games img {
+      width: 100% !important;
+      height: 200px !important;
+      object-fit: cover !important;
+    }
+
+    #games [class*="card"],
+    #games [class*="game"],
+    #games [class*="item"] {
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+
     @media (max-width: 768px) {
       .games-container { margin-top: 80px; min-height: calc(100vh - 80px); }
+      #games { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
     }
     @media (max-width: 480px) {
       .games-container { margin-top: auto; padding: 15px; }
+      #games { grid-template-columns: 1fr 1fr; gap: 12px; }
     }
   </style>
 </head>
