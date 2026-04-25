@@ -1,4 +1,3 @@
-// Apply saved theme immediately on every page load
 (function() {
     const saved = localStorage.getItem('vyper-theme');
     if (saved && saved !== 'default') {
