@@ -14,9 +14,13 @@ const navForward = document.getElementById("nav-forward");
 const navRefresh = document.getElementById("nav-refresh");
 const navUrlInput = document.getElementById("nav-url-input");
 const navHomeBtn = document.getElementById("nav-home-btn");
+const navHideBtn = document.getElementById("nav-hide-btn");
+const navShowTab = document.getElementById("nav-show-tab");
+const homeTransition = document.getElementById("home-transition");
 
 /* FRAME REFERENCE */
 let currentFrame = null;
+let navHidden = false;
 
 /* SCRAMJET */
 const { ScramjetController } = $scramjetLoadController();
@@ -47,12 +51,8 @@ function hideSpinner() {
 /* CUSTOM SEARCH LOGIC */
 function buildURL(input, engine) {
     try {
-        if (input.startsWith("http://") || input.startsWith("https://")) {
-            return input;
-        }
-        if (input.includes(".")) {
-            return "https://" + input;
-        }
+        if (input.startsWith("http://") || input.startsWith("https://")) return input;
+        if (input.includes(".")) return "https://" + input;
         return engine.replace("%s", encodeURIComponent(input));
     } catch {
         return engine.replace("%s", encodeURIComponent(input));
@@ -62,6 +62,9 @@ function buildURL(input, engine) {
 /* BROWSER NAV LOGIC */
 function showBrowserNav(url) {
     browserNav.classList.add("visible");
+    browserNav.classList.remove("hidden-bar");
+    navShowTab.classList.remove("visible");
+    navHidden = false;
     try {
         const parsed = new URL(url);
         navUrlInput.value = parsed.hostname + (parsed.pathname !== "/" ? parsed.pathname : "");
@@ -73,7 +76,10 @@ function showBrowserNav(url) {
 
 function hideBrowserNav() {
     browserNav.classList.remove("visible");
+    browserNav.classList.remove("hidden-bar");
+    navShowTab.classList.remove("visible");
     navUrlInput.value = "";
+    navHidden = false;
 }
 
 function updateNavButtons() {
@@ -87,33 +93,56 @@ function updateNavButtons() {
     }
 }
 
+/* HIDE NAV BAR */
+navHideBtn.addEventListener("click", () => {
+    browserNav.classList.add("hidden-bar");
+    navShowTab.classList.add("visible");
+    navHidden = true;
+});
+
+/* SHOW NAV BAR AGAIN */
+navShowTab.addEventListener("click", () => {
+    browserNav.classList.remove("hidden-bar");
+    navShowTab.classList.remove("visible");
+    navHidden = false;
+});
+
 navBack.addEventListener("click", () => {
-    if (currentFrame) {
-        try { currentFrame.historyGoBack?.(); updateNavButtons(); } catch {}
-    }
+    if (currentFrame) { try { currentFrame.historyGoBack?.(); updateNavButtons(); } catch {} }
 });
 
 navForward.addEventListener("click", () => {
-    if (currentFrame) {
-        try { currentFrame.historyGoForward?.(); updateNavButtons(); } catch {}
-    }
+    if (currentFrame) { try { currentFrame.historyGoForward?.(); updateNavButtons(); } catch {} }
 });
 
 navRefresh.addEventListener("click", () => {
-    if (currentFrame) {
-        try { currentFrame.reload?.(); } catch {}
-    }
+    if (currentFrame) { try { currentFrame.reload?.(); } catch {} }
 });
 
+/* HOME BUTTON WITH TRANSITION */
 navHomeBtn.addEventListener("click", () => {
-    if (currentFrame) {
-        currentFrame.frame.remove();
-        currentFrame = null;
-    }
-    hideBrowserNav();
-    address.value = "";
-    error.textContent = "";
-    errorCode.textContent = "";
+    // Show transition overlay with spinner and logo
+    homeTransition.classList.add("active");
+
+    setTimeout(() => {
+        if (currentFrame) {
+            currentFrame.frame.remove();
+            currentFrame = null;
+        }
+        hideBrowserNav();
+        address.value = "";
+        error.textContent = "";
+        errorCode.textContent = "";
+
+        // Fade out transition overlay
+        homeTransition.style.transition = "opacity 0.4s ease";
+        homeTransition.style.opacity = "0";
+        setTimeout(() => {
+            homeTransition.classList.remove("active");
+            homeTransition.style.opacity = "";
+            homeTransition.style.transition = "";
+        }, 400);
+    }, 900);
 });
 
 /* Navigate from nav url bar */
@@ -145,9 +174,7 @@ async function navigateProxy(url) {
 
     try {
         if ((await connection.getTransport()) !== "/libcurl/index.mjs") {
-            await connection.setTransport("/libcurl/index.mjs", [
-                { websocket: wispUrl },
-            ]);
+            await connection.setTransport("/libcurl/index.mjs", [{ websocket: wispUrl }]);
         }
     } catch (err) {
         hideSpinner();
