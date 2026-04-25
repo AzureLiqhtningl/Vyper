@@ -168,7 +168,7 @@ p { font-family: "Pixelify Sans", sans-serif; color: var(--vyper-text); }
 }
 
 .sidebar-logo {
-    width: 48px; height: 48px;
+    width: 64px; height: 64px;
     border-radius: 10px; object-fit: contain;
     transition: all 0.5s ease-in-out;
 }
@@ -346,7 +346,7 @@ footer a:hover { color: var(--vyper-accent); }
 @media (max-width: 480px) {
     .sidebar { flex-wrap: wrap; gap: 10px; padding: 10px; height: auto; }
     .sidebar-header { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0 0 10px 0; margin-bottom: 10px; }
-    .sidebar-logo { width: 32px; height: 32px; }
+    .sidebar-logo { width: 48px; height: 48px; }
     .sidebar-header h2 { font-size: 16px; }
     .nav-links { width: 100%; gap: 5px; }
     .nav-link { padding: 6px 10px; font-size: 12px; }

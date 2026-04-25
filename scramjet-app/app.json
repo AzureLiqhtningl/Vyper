@@ -2,6 +2,6 @@
 	"name": "Scramjet Demo",
 	"description": "Scramjet Demo App",
 	"repository": "https://github.com/.../Scramjet-Demo",
-	"logo": "https://raw.githubusercontent.com/MercuryWorkshop/scramjet/main/assets/scramjet.png",
+	"logo": "logo.png",
 	"keywords": ["scramjet"]
 }
