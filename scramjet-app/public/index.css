@@ -1,4 +1,9 @@
 /* --------------------------------------------------
+   FONTS - MUST BE FIRST
+-------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Pixelify+Sans:wght@400;700&family=Atomic+Age&family=Exo+2:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap");
+
+/* --------------------------------------------------
    THEME VARIABLES
 -------------------------------------------------- */
 :root {
@@ -96,11 +101,6 @@
 }
 
 /* --------------------------------------------------
-   FONTS
--------------------------------------------------- */
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Pixelify+Sans:wght@400;700&family=Atomic+Age&family=Exo+2:wght@400;700&display=swap");
-
-/* --------------------------------------------------
    GLOBAL STYLES
 -------------------------------------------------- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -190,8 +190,9 @@ p { font-family: "Pixelify Sans", sans-serif; color: var(--vyper-text); }
     color: var(--vyper-text);
     text-decoration: none; font-size: 15px; font-weight: 500;
     transition: all 0.2s ease; border-radius: 8px; white-space: nowrap;
+    font-family: "Pixelify Sans", sans-serif;
 }
-.nav-link:hover { color: var(--vyper-accent); background: var(--vyper-accent-glow); }
+.nav-link:hover { color: var(--vyper-accent); background: var(--vyper-accent-glow); text-decoration: none; }
 .nav-link.active {
     color: var(--vyper-accent);
     background: var(--vyper-accent-glow);
