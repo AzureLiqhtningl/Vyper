@@ -1098,6 +1098,47 @@
             });
         </script>
     </div>
+
+    <script>
+function applyThemeToTailwind() {
+    const root = getComputedStyle(document.documentElement);
+    const bg = root.getPropertyValue('--vyper-bg').trim();
+    const text = root.getPropertyValue('--vyper-text').trim();
+    const accent = root.getPropertyValue('--vyper-accent').trim();
+
+    document.documentElement.style.setProperty('--tw-vyper-bg', bg);
+
+    // Apply directly to body since Tailwind classes are static
+    document.body.style.backgroundColor = bg;
+    document.body.style.color = text;
+
+    // Update all elements using vyper colors
+    document.querySelectorAll('[class*="bg-vyper-bg"]').forEach(el => el.style.backgroundColor = bg);
+    document.querySelectorAll('[class*="text-vyper-text"]').forEach(el => el.style.color = text);
+    document.querySelectorAll('[class*="text-vyper-accent"]').forEach(el => el.style.color = accent);
+    document.querySelectorAll('[class*="bg-vyper-accent"]').forEach(el => el.style.backgroundColor = accent);
+    document.querySelectorAll('[class*="border-vyper-accent"]').forEach(el => el.style.borderColor = accent);
+    document.querySelectorAll('[class*="ring-vyper-accent"]').forEach(el => el.style.outlineColor = accent);
+}
+
+// Apply on load
+applyThemeToTailwind();
+
+// Watch for theme changes from settings.html
+window.addEventListener('storage', (e) => {
+    if (e.key === 'vyper-theme') {
+        const theme = e.newValue;
+        if (theme && theme !== 'default') {
+            document.documentElement.setAttribute('data-theme', theme);
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+        // Small delay to let CSS vars update
+        setTimeout(applyThemeToTailwind, 50);
+    }
+});
+</script>
+
 </body>
 
 </html>
