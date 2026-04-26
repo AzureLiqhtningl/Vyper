@@ -22,6 +22,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.3/cdn.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="sources.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script src="background.js" defer></script>
     <script>
         tailwind.config = {
             theme: {
@@ -78,6 +80,8 @@
         this.showParticles = !this.showParticles;
         localStorage.setItem('showParticles', this.showParticles);
         window.dispatchEvent(new Event('appearance-changed'));
+        // Trigger background refresh if hidden/shown
+        if (typeof initBackground === 'function') initBackground();
     },
     toggleUpdateNotice() {
         this.showUpdateNotice = !this.showUpdateNotice;
@@ -95,6 +99,7 @@
         window.dispatchEvent(new Event('language-changed'));
     }
 }">
+    <div id="tsparticles"></div>
     <!-- mobile warning -->
     <div x-show="showMobileWarning && !isMobileWarningDismissed"
          class="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 px-4"
