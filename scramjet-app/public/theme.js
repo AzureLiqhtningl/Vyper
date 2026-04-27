@@ -90,6 +90,41 @@ html, body, iframe { margin: 0; width: 100%; height: 100%; border: 0; overflow: 
 </head>
 <body>
 <iframe src="${launchUrl}" referrerpolicy="no-referrer"></iframe>
+<script>
+(() => {
+    const defaultTitle = ${JSON.stringify(defaultTitle)};
+    const defaultFavicon = ${JSON.stringify(defaultFavicon)};
+
+    function ensureFaviconLink() {
+        let link =
+            document.querySelector("link[rel='shortcut icon']") ||
+            document.querySelector("link[rel='icon']");
+
+        if (!link) {
+            link = document.createElement("link");
+            link.rel = "shortcut icon";
+            document.head.appendChild(link);
+        }
+
+        return link;
+    }
+
+    function applySavedCloak() {
+        const savedTitle = localStorage.getItem("vyper-cloak-title");
+        const savedFavicon = localStorage.getItem("vyper-cloak-favicon");
+
+        document.title = savedTitle || defaultTitle;
+        ensureFaviconLink().href = savedFavicon || defaultFavicon;
+    }
+
+    applySavedCloak();
+    window.addEventListener("storage", (event) => {
+        if (event.key === "vyper-cloak-title" || event.key === "vyper-cloak-favicon") {
+            applySavedCloak();
+        }
+    });
+})();
+</script>
 </body>
 </html>`);
             popup.document.close();
