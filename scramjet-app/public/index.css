@@ -249,8 +249,8 @@ p { font-family: "Pixelify Sans", sans-serif; color: var(--vyper-text); }
 -------------------------------------------------- */
 .search-form {
     display: flex; gap: 12px;
-    width: 100%; max-width: 650px;
-    align-items: center; margin: 20px 0;
+    width: 100%; max-width: 760px;
+    align-items: center; margin: 12px 0 20px;
 }
 
 .search-input {
@@ -364,3 +364,4 @@ footer a:hover { color: var(--vyper-accent); }
     .hero-title { font-size: 28px; }
     .content-wrapper { padding: 20px 10px; }
 }
+
