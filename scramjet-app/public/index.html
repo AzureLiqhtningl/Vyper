@@ -19,6 +19,66 @@
 		.hero-meta { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 14px; }
 		.hero-clock { font-family: 'Space Mono', monospace; font-size: 22px; color: var(--vyper-accent); text-shadow: 0 0 8px var(--vyper-accent); }
 		.hero-date { font-family: 'Pixelify Sans', sans-serif; font-size: 15px; color: var(--vyper-text); }
+		.recent-sites {
+			width: min(650px, 100%);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 12px;
+			margin-top: 10px;
+		}
+		.recent-sites.hidden { display: none; }
+		.recent-sites-header {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			font-family: 'Space Mono', monospace;
+			font-size: 12px;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--vyper-text);
+			opacity: 0.78;
+		}
+		.recent-sites-list {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 10px;
+		}
+		.recent-site-chip {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			max-width: 100%;
+			padding: 10px 14px;
+			border: 1px solid var(--vyper-border);
+			border-radius: 999px;
+			background: rgba(17,17,17,0.52);
+			color: var(--vyper-text);
+			font-family: 'Space Mono', monospace;
+			font-size: 12px;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			backdrop-filter: blur(4px);
+		}
+		.recent-site-chip:hover {
+			color: var(--vyper-accent);
+			border-color: var(--vyper-accent);
+			background: var(--vyper-accent-glow);
+			transform: translateY(-1px);
+		}
+		.recent-site-chip svg {
+			flex-shrink: 0;
+			opacity: 0.78;
+		}
+		.recent-site-label {
+			display: inline-block;
+			max-width: 180px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
 
 		#foxbox-popup {
 			position: fixed; bottom: 110px; right: 24px;
@@ -177,7 +237,7 @@
 	</div>
 
 	<!-- Tab to show nav bar again when hidden -->
-	<div id="nav-show-tab">▼ Show Nav</div>
+	<div id="nav-show-tab">â–¼ Show Nav</div>
 
 	<nav class="sidebar">
 		<a href="index.html" class="sidebar-header" style="text-decoration: none;">
@@ -186,7 +246,7 @@
 		</a>
 		<ul class="nav-links">
 			<li><a href="games.html" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></svg> Games</a></li>
-			 <li><a href="movies.html" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M7 4v16"/><path d="M17 4v16"/><path d="M2 8h5"/><path d="M2 12h5"/><path d="M2 16h5"/><path d="M17 8h5"/><path d="M17 12h5"/><path d="M17 16h5"/></svg> Movies</a></li>
+			<li><a href="movies.html" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M7 4v16"/><path d="M17 4v16"/><path d="M2 8h5"/><path d="M2 12h5"/><path d="M2 16h5"/><path d="M17 8h5"/><path d="M17 12h5"/><path d="M17 16h5"/></svg> Movies</a></li>
 			<li><a href="ai.html" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg> AI</a></li>
 			<li><a href="settings.html" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg> Settings</a></li>
 		</ul>
@@ -194,22 +254,26 @@
 
 	<div class="main-container">
 		<div class="content-wrapper" style="justify-content:center; padding-top:160px;">
-			<div class="hero-section" style="margin-bottom:32px;">
+			<div class="hero-section" style="margin-bottom:0;">
 				<h1 class="hero-title">Vyper</h1>
 				<p class="hero-subtitle">Free access to the open internet</p>
 				<div class="hero-meta">
 					<span class="hero-clock" id="hero-clock"></span>
 					<span class="hero-date" id="hero-date"></span>
 				</div>
+				<div class="recent-sites hidden" id="recent-sites">
+					<div class="recent-sites-header">
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+						<span>Recent Sites</span>
+					</div>
+					<div class="recent-sites-list" id="recent-sites-list"></div>
+				</div>
 			</div>
-			<form id="sj-form" class="search-form">
+			<form id="sj-form" class="search-form" style="max-width:760px; margin:12px 0 20px;">
 				<input id="sj-search-engine" value="https://search.brave.com/search?q=%s" type="hidden" />
 				<input id="sj-address" type="text" placeholder="Enter URL or search..." class="search-input" />
 				<button type="submit" class="search-btn">Search</button>
 			</form>
-			<div class="info-box">
-				<p>Vyper is a web proxy designed to bypass restrictions and access the web freely.</p>
-			</div>
 			<div class="error-container">
 				<p id="sj-error"></p>
 				<pre id="sj-error-code"></pre>
@@ -219,11 +283,11 @@
 
 	<div id="foxbox-popup">
 		<div class="foxbox-text">
-			<div class="foxbox-title">🦊 FoxBox MC!</div>
+			<div class="foxbox-title">ðŸ¦Š FoxBox MC!</div>
 			<div class="foxbox-desc">Our amazing partner for an amazing MC &amp; Eaglercraft server experience!</div>
 			<span class="foxbox-join">foxboxmc.duckdns.org</span>
 		</div>
-		<button id="foxbox-close" onclick="document.getElementById('foxbox-popup').style.display='none'">✕</button>
+		<button id="foxbox-close" onclick="document.getElementById('foxbox-popup').style.display='none'">âœ•</button>
 	</div>
 
 	<div id="discord-popup">
@@ -234,7 +298,7 @@
 			<div style="font-weight:700; margin-bottom:3px;">Join our Discord!</div>
 			<a href="https://discord.gg/n2vPSdJtY4" target="_blank">discord.gg/n2vPSdJtY4</a>
 		</div>
-		<button id="discord-popup-close" onclick="document.getElementById('discord-popup').style.display='none'">✕</button>
+		<button id="discord-popup-close" onclick="document.getElementById('discord-popup').style.display='none'">âœ•</button>
 	</div>
 
 	<script>
